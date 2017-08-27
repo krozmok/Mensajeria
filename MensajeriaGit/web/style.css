@@ -1,0 +1,272 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.contenedor{
+    margin: auto;
+    position: relative;
+}
+body {
+    
+    margin: 0;
+    padding: 0;
+    background:#393E46;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    position: relative;
+}
+header{
+    background:#222831;
+    z-index: 100;
+    width: 100%;
+    padding: 0px;
+    color:#EEEEEE;
+    text-align: center;
+    text-decoration-color:#99ffcc
+
+}
+nav{
+    background-color:#222831;
+    position: absolute;
+    width: 10%;
+    z-index: 100;
+    height: 100%;
+    
+}
+.logo a{
+    color: #eee;
+    text-decoration: none;
+    
+}
+h1{
+    top: 2px;
+    font-size: 20px;
+}
+
+.footer ul{
+    font-size: 15px;
+    list-style: none;
+    padding: 0;
+}
+nav ul {
+  
+  list-style: none;
+  overflow: hidden; /* Limpiamos errores de float */
+}
+ 
+nav ul li {
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+nav ul li:first-child {
+ 
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+nav ul li a {
+  display: block; /* Convertimos los elementos a en elementos bloque para manipular el padding */
+  padding: 20px;
+  color:#EEEEEE;
+  text-decoration: none;
+}
+nav ul li:active{
+    background:#ffffff;
+}
+nav ul li:visited {
+  color:#8B898A;
+}
+nav ul li:hover {
+  background:#B0C3C9;
+}
+nav ul li.Logo{
+    text-align: left;
+    
+}
+nav ul li.Menu{
+    text-align: left;
+}
+.footer {
+  position:relative;
+  bottom:0;
+  margin: auto;
+  width:100%;
+  background-color:#222831;
+  text-align: center;
+  color:#EEE;
+}
+.section{
+    position:relative;
+    width: 80%;
+    left: 150px;
+    text-align: center;
+    background-color:#00ADB5;
+    color: #393E46;
+    padding: 30px;
+    margin: 20px;
+    height: auto;
+    font-size: 20px;
+    
+}
+.article{
+    border-radius: 58px 58px 58px 58px;
+    text-align:justify;
+    padding: 50px;
+    margin: 40PX;
+    left: 0px;
+    width: 95%;
+    background-color:#EEEEEE;
+    color: #393E46;
+    position: inherit;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 200;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+#contenedor{
+    position: relative;
+    right: 0px;
+    width: 100%;
+    margin: 0px;
+    padding: 0;
+}
+#botones a{
+  text-decoration: none;
+  color:#EEEEEE;
+  position: relative;
+}
+#contenedor .section #botones{
+  
+  margin: 10px;
+}
+#contenedor .section #botones ul{
+  list-style: none;
+  overflow: hidden;
+}
+#botones li:first-child{
+  margin-left: 0px;
+  border-radius: 200px 10px 10px 200px;
+}
+#botones li{
+  border-radius: 0px 200px 200px 0px;
+}
+#contenedor .section #botones ul li{
+  display: inline-block;
+  background: #222831 ;
+  position: relative;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  margin: 10px;
+}
+img{
+  position: relative;
+
+}
+#contenedor .section #botones ul li:hover{
+
+  
+  background-color: #EEEEEE;
+  
+}
+#contenedor .section #botones ul li a:hover{
+
+  color: #222831;
+  
+}
+#introduccion ul{
+  list-style: none;
+  overflow: hidden;
+
+}
+#introduccion ul li{
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 200px 200px 200px 200px;
+  padding: 30px;
+  margin: 30px;
+  width: 150px;
+  height: 150px;
+
+}
+
+#botones a {
+    transition: color 0.15s linear 0.1s;
+}
+#botones li {
+    transition: background-color 0.15s linear 0.1s;
+}
+#botones ul li a {
+  display: block; /* Convertimos los elementos a en elementos bloque para manipular el padding */
+  padding: 20px;
+  color:#EEEEEE;
+  text-decoration: none;
+}
+.menu-fixed{
+    position: fixed;
+    z-index: 1000;
+    top:0;
+    /* max-width: 1000px; */
+    width: 10%;
+    height: 100%;
+    box-shadow: 0px 4px 3px rgba(0,0,0,.5); 
+}
+#caracteristicas{
+  text-align: center;
+}
+
+.chat{
+    border: 1px solid#476b95;
+    height: 700px;
+    background: #eee;
+    
+    
+}
+.Imagen1{
+    width: 20%;
+    height:100%;
+    border: 1px solid #346bab;
+    background:#a9b6c6;
+    float: left;
+    
+}
+#caja_envio{
+    width: 60%;
+    height: 100px;
+    top: 0;
+    
+}
+#boton_envio{
+    width: 10%;
+    height: 100px
+}
+.Imagen2{
+    width: 20%;
+    height: 100%;
+    border: 1px solid #346bab;
+    background:#a9b6c6;
+    float: right;
+    
+}
