@@ -16,7 +16,7 @@
         <%
             // Conexion a la base de datos
             String BaseDatos = "BDMensajeria";
-            MongoClient mCliente = new MongoClient("127.0.0.1",27017);
+            MongoClient mCliente = new MongoClient("25.94.233.89",27017);
             DB db = mCliente.getDB(BaseDatos);
             DBCollection coleccion = db.getCollection("Usuario");
            
