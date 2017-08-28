@@ -21,6 +21,7 @@
         <%
             
             HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin") == null) sesion.setAttribute("setLoggin", "false");
             if(sesion.getAttribute("setLoggin").toString().compareTo("true")==0){
         %>
         <jsp:forward page="menu.jsp"/>
