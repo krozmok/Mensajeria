@@ -36,9 +36,9 @@
 				<!-- INICIO DEL NAV -->
 				<nav class = "menu">
 					<ul>
-						<li ><a class = "Logo" href = "index.html"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+						<li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
 						<li ><a class = "Menu" href = "login.jsp">Log In</a></li>
-						<li><a class = "Menu" href="signup.html"> Sign UP</a></li>
+						<li><a class = "Menu" href="signup.jsp"> Sign UP</a></li>
 						<li><a class = "Menu" href="#"> Soporte</a></li>
 						 <li><a class = "Menu" href="#"> Contactanos</a></li>
 					</ul>
