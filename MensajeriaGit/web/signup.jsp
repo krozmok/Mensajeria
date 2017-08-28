@@ -17,7 +17,6 @@ and open the template in the editor.
     </head>
     <body>
         <%
-            
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("setLoggin") == null) sesion.setAttribute("setLoggin", "false");
             if(sesion.getAttribute("setLoggin").toString().compareTo("true")==0){

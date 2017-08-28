@@ -12,6 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
+        %>
+        <jsp:forward page="login.jsp"/>
+        <%
+            }else{}
+        %>
         <h1>Hello World!</h1>
     </body>
 </html>

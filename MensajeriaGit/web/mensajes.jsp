@@ -19,6 +19,14 @@
     </head>
     <body>
         <%
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
+        %>
+        <jsp:forward page="login.jsp"/>
+        <%
+            }else{}
+        %>
+        <%
             String BaseDatos = "BDMensajeria";
             MongoClient mCliente = new MongoClient("127.0.0.1",27017);
             DB db = mCliente.getDB(BaseDatos);

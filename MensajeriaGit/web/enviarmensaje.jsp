@@ -20,6 +20,14 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
+        %>
+        <jsp:forward page="login.jsp"/>
+        <%
+            }else{}
+        %>
         <header class="header">
 			<div class="contenedor">
 				<div class="logo">

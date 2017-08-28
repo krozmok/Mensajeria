@@ -12,6 +12,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
+        %>
+        <jsp:forward page="login.jsp"/>
+        <%
+            }else{}
+        %>
     <%! 
         public void Conectar(String Usuario, HttpSession sesion){
             sesion.setAttribute("Usuario", Usuario);
@@ -57,7 +65,7 @@
                         HttpSession sesionok = request.getSession();
                         String User = sesionok.getAttribute("Usuario").toString();
                         if(User!= null){
-                            HttpSession sesion = request.getSession();
+                            //HttpSession sesion = request.getSession();
                             out.println("<li><a href = 'mensajes.jsp'> Ver mensajes</a></li>");
                         }
                     %>
