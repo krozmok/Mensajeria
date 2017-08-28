@@ -29,22 +29,23 @@
     </head>
     <body>
        <header class="header">
-			<div class="contenedor">
-				<div class="logo">
-				<h1>STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></h1>
-				</div>
-				<!-- INICIO DEL NAV -->
-				<nav class = "menu">
-					<ul>
-						<li ><a class = "Logo" href = "index.html"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-						<li ><a class = "Menu" href = "javascript:Carga('login.jsp','contenedor');">Log In</a></li>
-						<li><a class = "Menu" href="javascript:Carga('signup.html','contenedor');"> Sign UP</a></li>
-						<li><a class = "Menu" href="#"> Soporte</a></li>
-						 <li><a class = "Menu" href="#"> Contactanos</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+            <div class="contenedor">
+                <div class="logo">
+                    <h1><a href="index.html">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
+                </div>
+	
+            </div>
+	</header>
+	
+	<nav class = "menu">
+            <ul>
+            <li ><a class = "Logo" href = "index.html"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+            <li> <a class = "Menu" href="#">Mi perfil</a></li>
+            <li ><a class = "Menu" href = "#">Mensajes</a></li>
+            <li><a class = "Menu" href="#">Archivos</a></li>
+             <li><a class = "Menu" href="#">Usuarios</a></li>
+            </ul>
+        </nav>ader>
        
         <div id="contenedor">
             <section class="section">
