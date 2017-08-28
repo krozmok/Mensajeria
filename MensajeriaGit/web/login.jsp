@@ -18,6 +18,15 @@
 		<script language="JavaScript" type="text/javascript" src="motor.js"></script>
     </head>
     <body>
+        <%
+            
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin").toString().compareTo("true")==0){
+        %>
+        <jsp:forward page="menu.jsp"/>
+        <%
+            }else{}
+        %>
         <header class="header">
             <div class="contenedor">
                 <div class="logo">
@@ -42,7 +51,7 @@
 	<section class="section">
                
 	<h1>LOG IN</h1>	
-            <form action = "check.jsp" name = "frmMain" method = "post">
+            <form action = "verificarLogin.jsp" name = "frmMain" method = "post">
                 Usuario: <input type = "text" name = "txtUSR"><br>
                 Contraseña: <input type ="password"  name ="txtPASS"><br>
             <input type ="submit" value="Validar">
