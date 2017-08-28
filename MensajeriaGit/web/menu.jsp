@@ -39,7 +39,7 @@
        <header class="header">
             <div class="contenedor">
                 <div class="logo">
-                    <h1><a href="index.html">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
+                    <h1><a href="index.jsp">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
                 </div>
 	
             </div>
@@ -47,7 +47,7 @@
 	
 	<nav class = "menu">
             <ul>
-            <li ><a class = "Logo" href = "index.html"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+            <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
             <li> <a class = "Menu" href="#">Mi perfil</a></li>
             <li ><a class = "Menu" href = "#">Mensajes</a></li>
             <li><a class = "Menu" href="#">Archivos</a></li>
@@ -78,6 +78,16 @@
                 </div>
                 </div>
             </section>
+        </div>
+        <div class="footer">
+                <h3>Grupo:<br>
+                    <ul>
+                        <li>Caceres Thamiña Paul Vladimir</li>
+                        <li>Campos Ardiles Isaac</li>
+                        <li>Leon Malpartida Jared</li>
+                        <li>Rimayhuaman Grajeda Brayan</li>
+                    </ul>
+                </h3>
         </div>
     </body>
 </html>

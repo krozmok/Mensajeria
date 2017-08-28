@@ -1,8 +1,4 @@
-<%-- 
-    Document   : index.jsp
-    Created on : Aug 27, 2017, 8:00:29 PM
-    Author     : Paul
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,7 +14,17 @@
 	<script language="JavaScript" type="text/javascript" src="main.js"></script>
 	<script language="JavaScript" type="text/javascript" src="motor.js"></script>
     </head>
+    
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin") == null) sesion.setAttribute("setLoggin", "false");
+            if(sesion.getAttribute("setLoggin").toString().compareTo("true")==0){
+        %>
+        <jsp:forward page="menu.jsp"/>
+        <%
+            }else{}
+        %>
 	<header class="header">
             <div class="contenedor">
                 <div class="logo">

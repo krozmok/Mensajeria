@@ -28,7 +28,7 @@ and open the template in the editor.
         <header class="header">
             <div class="contenedor">
             <div class="logo">
-                <h1><a href="index.html">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
+                <h1><a href="index.jsp">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
             </div>
 	
             </div>

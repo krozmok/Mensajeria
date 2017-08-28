@@ -1,6 +1,8 @@
 html {
   height: 100%;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 *{
     padding: 0;
@@ -12,13 +14,12 @@ html {
     position: relative;
 }
 body {
-    
+    height: 100%;
     margin: 0;
     padding: 0;
     background:#393E46;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    position: relative;
 }
 header{
     background:#222831;
@@ -93,8 +94,6 @@ nav ul li.Menu{
 }
 .footer {
   position:relative;
-  bottom:0;
-  margin: auto;
   width:100%;
   background-color:#222831;
   text-align: center;
@@ -111,6 +110,7 @@ nav ul li.Menu{
     margin: 20px;
     height: auto;
     font-size: 20px;
+    overflow: auto;
     
 }
 .article{
@@ -149,6 +149,7 @@ h3 {
     position: relative;
     right: 0px;
     width: 100%;
+    min-height: 100%;
     margin: 0px;
     padding: 0;
 }
