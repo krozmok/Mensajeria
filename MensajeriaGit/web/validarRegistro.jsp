@@ -4,6 +4,8 @@
     Author     : Paul
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.mongodb.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,38 +17,35 @@
     <body>
         <%
             try{
-                String BaseDatos = "BDMensajeria";
-                MongoClient mCliente = new MongoClient("127.0.0.1",27017);
-                DB db = mCliente.getDB(BaseDatos);
-                DBCollection coleccion = db.getCollection("Usuario");  
-                BasicDBObject documento = new BasicDBObject();
-                documento.put("Nombre", request.getParameter("txtNombre"));
-                documento.put("Usuario", request.getParameter("txtNick"));
-                documento.put("FechaNacimiento", request.getParameter("dateNacimiento"));
-                documento.put("Sexo", request.getParameter("rdioSexo"));
-                documento.put("Contraseña", request.getParameter("txtpass"));
-                documento.put("PreguntaSecreta", request.getParameter("txtpregunta"));
-                documento.put("Respuesta", "txtrespuesta");
-                coleccion.insert(documento);
-                DBCursor cursor = coleccion.find(documento);
-                if (cursor.hasNext()) {
-                        HttpSession sesionOK = request.getSession();
-                        sesionOK.setAttribute("Usuario", request.getParameter("txtNick"));
-                        sesionOK.setAttribute("setLoggin","true");
-                        %>
-                        
-                        <jsp:forward page="login.jsp"/>
+               
+                String Nombre = request.getParameter("txtNombre");
+                String Usuario = request.getParameter("txtNick");
+                String Nacimiento = request.getParameter("dateNacimiento");
+                String Sexo = request.getParameter("rdioSexo");
+                String Pass = request.getParameter("txtpass");
+                String Pregunta = request.getParameter("txtpregunta");
+                String Respuesta = request.getParameter("txtrespuesta");                
+        %>
+            <jsp:useBean id="miSesion" class="bean.Signup" scope = "session">
+                <jsp:setProperty name="miSesion" property = "aNombre" value="<%=Nombre%>" />
+                <jsp:setProperty name="miSesion" property = "aUsuario" value="<%=Usuario%>" />
+                <jsp:setProperty name="miSesion" property = "aFechaNacimiento" value="<%=Nacimiento%>" />
+                <jsp:setProperty name="miSesion" property = "aSexo" value="<%=Sexo%>" />
+                <jsp:setProperty name="miSesion" property = "aContrasena" value="<%=Pass%>" />
+                <jsp:setProperty name="miSesion" property = "aPreguntaSecreta" value="<%=Pregunta%>" />
+                <jsp:setProperty name="miSesion" property = "aRespuesta" value="<%=Respuesta%>" />
+            </jsp:useBean>
+            <%
+                 miSesion.Insertar();
+                
+            %>
+            <jsp:forward page="login.jsp"/>
                     <%    
                 }
-                else{
-                    %>
-                    <jsp:forward page="index.html"/>
-                    <%
-                }
-            }
             catch(MongoException e){
-                
+               // out.println(e);
             }
+            
             
         %>
         

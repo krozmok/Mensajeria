@@ -72,7 +72,7 @@
                     
                     
                     <li><a href = "enviarmensaje.jsp"> Enviar mensajes</a> </li>
-                    <li><a href = "#"> Salir</a></li>
+                    <li><a href = "cerrarsesion.jsp"> Salir</a></li>
 
                 </ul>
                 </div>
