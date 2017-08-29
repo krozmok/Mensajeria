@@ -89,10 +89,6 @@ public class Signup {
         this.aBDCon = aBDCon;
     }
 
-    
-
-   
-    
     public void Insertar(){
         this.aBDCon = new Conexion("BDMensajeria");
         BasicDBObject Documento = new BasicDBObject();

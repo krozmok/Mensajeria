@@ -25,6 +25,10 @@
         <%
             }else{}
         %>
+        <%
+            String UsuarioPrincipal = sesion.getAttribute("Usuario").toString();
+            String UsuarioDestino = request.getParameter("UsuarioD");
+        %>
         
         <header class="header">
             <div class="contenedor">
@@ -37,11 +41,11 @@
 	
 	<nav class = "menu">
             <ul>
-            <li ><a class = "Logo" href = "index.html"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-            <li> <a class = "Menu" href="signup.html"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>
-            <li ><a class = "Menu" href = "login.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i> Log In</a></li>
-            <li><a class = "Menu" href="#"><i class="fa fa-life-ring" aria-hidden="true"></i> Soporte</a></li>
-             <li><a class = "Menu" href="#"><i class="fa fa-phone" aria-hidden="true"></i> Contactanos</a></li>
+            <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+            <li> <a class = "Menu" href="perfil.jsp">Mi perfil</a></li>
+            <li ><a class = "Menu" href = "mensajes.jsp">Mensajes</a></li>
+            <li><a class = "Menu" href="#">Archivos</a></li>
+             <li><a class = "Menu" href="#">Usuarios</a></li>
             </ul>
         </nav>
         
@@ -50,10 +54,10 @@
                 <div id="presentacion">
                     <div class="chat">
                         <div class="Imagen1">
-                            
+                            <%=UsuarioPrincipal%>
                         </div>
                         <div class="Imagen2">
-                            
+                            <%=UsuarioDestino%>
                         </div>
                     </div>
                     <form class="message-box">

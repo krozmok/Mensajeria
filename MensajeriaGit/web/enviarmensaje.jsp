@@ -29,25 +29,28 @@
             }else{}
         %>
         <header class="header">
-			<div class="contenedor">
-				<div class="logo">
-				<h1>STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></h1>
-				</div>
-				<!-- INICIO DEL NAV -->
-				<nav class = "menu">
-					<ul>
-						<li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-						<li ><a class = "Menu" href = "login.jsp">Log In</a></li>
-						<li><a class = "Menu" href="signup.jsp"> Sign UP</a></li>
-						<li><a class = "Menu" href="#"> Soporte</a></li>
-						 <li><a class = "Menu" href="#"> Contactanos</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+            <div class="contenedor">
+                <div class="logo">
+                    <h1><a href="index.jsp">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
+                </div>
+	
+            </div>
+	</header>
+        <nav class = "menu">
+            <ul>
+            <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+            <li> <a class = "Menu" href="perfil.jsp">Mi perfil</a></li>
+            <li ><a class = "Menu" href = "mensajes.jsp">Mensajes</a></li>
+            <li><a class = "Menu" href="#">Archivos</a></li>
+             <li><a class = "Menu" href="#">Usuarios</a></li>
+            </ul>
+        </nav>
         <div id="contenedor">
             <section class="section">
                 <div id="presentacion">
+                    <%String Usuario = sesion.getAttribute("Usuario").toString();%>
+                    
+                    <h3>A quien desea enviar un mensaje, <%=Usuario%></h3>
                     <%
                         String BaseDatos = "BDMensajeria";
                         MongoClient mCliente = new MongoClient("127.0.0.1",27017);
@@ -60,14 +63,18 @@
                         
                         <%
                         while(cursor.hasNext()){
+                            
                             String Usuario1 = cursor.next().get("Usuario").toString();
-                            if (Usuario1.equals())
+                            if (!Usuario1.equals(Usuario)){
+                                
+                            
                         %>
                         <tr>
-                            <td><input type = "submit" value="<%=Usuario1%>"></td>
+                            <td><input type = "submit" name="UsuarioD" value="<%=Usuario1%>"></td>
                             
                         </tr>
                         <%
+                            }
                         }
                     %>
                     </table>
@@ -75,5 +82,15 @@
                 </div>
             </section>
         </div>
+        <div class="footer">
+                <h3>Grupo:<br>
+                    <ul>
+                        <li>Caceres Thamiña Paul Vladimir</li>
+                        <li>Campos Ardiles Isaac</li>
+                        <li>Leon Malpartida Jared</li>
+                        <li>Rimayhuaman Grajeda Brayan</li>
+                    </ul>
+                </h3>
+        </div>            
     </body>
 </html>

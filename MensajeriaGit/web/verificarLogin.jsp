@@ -12,34 +12,39 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
         <%
+            try{
             // Conexion a la base de datos
-            String BaseDatos = "BDMensajeria";
-            MongoClient mCliente = new MongoClient("25.94.233.89",27017);
-            DB db = mCliente.getDB(BaseDatos);
-            DBCollection coleccion = db.getCollection("Usuario");
-           
-            String usuario = request.getParameter("txtUSR");
-            out.println(usuario);
-            String contraseña = request.getParameter("txtPASS");
-            BasicDBObject documento = new BasicDBObject();
-            documento.put("Usuario", usuario);
-            documento.put("Contraseña", contraseña);
-            DBCursor cursor = coleccion.find(documento);
-            out.println(cursor.hasNext());
-            %>
-         
-            <%
-            if (cursor.hasNext()) {
-                    HttpSession sesionOK = request.getSession();
-                    sesionOK.setAttribute("Usuario", usuario);
-                    sesionOK.setAttribute("setLoggin","true");
+           String Usuario = request.getParameter("txtUSR");
+           String Password = request.getParameter("txtPASS");
         %>
-        <jsp:forward page="menu.jsp"/>
+        <jsp:useBean id="miLogin" class="bean.Login" scope="session">
+            <jsp:setProperty name="miLogin" property="aUsuario" value="<%=Usuario%>"/>
+            <jsp:setProperty name="miLogin" property="aContraseña" value="<%=Password%>"/>
+        </jsp:useBean>
+        <%
+            if(miLogin.ValidarLogIn()){
+                HttpSession sesionOK = request.getSession();
+                sesionOK.setAttribute("Usuario", Usuario);
+                sesionOK.setAttribute("setLoggin", "true");
+                %>
+                
+                <jsp:forward page="menu.jsp"/>
+
         <%
             }else{
+            %>
+            <jsp:forward page="login.jsp"/>
+
+        <%
+            }
+        %>
+        
+        <%
+        }catch(MongoException e){
             
             %>
             <jsp:forward page="login.jsp" />
+
         <%
             }
             %>

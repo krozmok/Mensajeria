@@ -12,42 +12,34 @@ import com.mongodb.*;
  * @author Paul
  */
 public class Login {
-    private String Usuario;
-    private String Contraseña;
+    private String aUsuario;
+    private String aContraseña;
     private Conexion Con;
 
-    public Login(String Usuario, String Contraseña) {
-        this.Usuario = Usuario;
-        this.Contraseña = Contraseña;
-        this.Con = new Conexion("BDMensajeria");
-        Con.CrearConexion();
+    public Login() {
     }
 
-    public String getUsuario() {
-        return Usuario;
+    public void setaUsuario(String aUsuario) {
+        this.aUsuario = aUsuario;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public void setaContraseña(String aContraseña) {
+        this.aContraseña = aContraseña;
     }
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+    public void setCon(Conexion Con) {
+        this.Con = Con;
     }
 
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
-    }
+  
     
-    @Override
-    public String toString(){
-        return Usuario + "#" + Contraseña;
-    }
     
     public boolean ValidarLogIn(){
+        this.Con = new Conexion("BDMensajeria");
+        Con.CrearConexion();
         BasicDBObject Datos = new BasicDBObject();
-        Datos.put("Usuario",Usuario);
-        Datos.put("Contraseña", Datos);
+        Datos.put("Usuario",aUsuario);
+        Datos.put("Contraseña", aContraseña);
         return Con.ConsultarDatos("Usuario", Datos);
     }
 }
