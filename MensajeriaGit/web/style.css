@@ -34,7 +34,7 @@ header{
 nav{
     background-color:#222831;
     position: absolute;
-    width: 15%;
+    width: 10%;
     z-index: 100;
     height: 100%;
     
@@ -154,6 +154,11 @@ h3 {
     padding: 0;
 }
 /*INDEX*/
+#botones a{
+  text-decoration: none;
+  color:#EEEEEE;
+  position: relative;
+}
 #contenedor .section #botones{
   
   margin: 10px;
@@ -162,11 +167,6 @@ h3 {
   list-style: none;
   overflow: hidden;
 }
-#botones a{
-  text-decoration: none;
-  color:#EEEEEE;
-  position: relative;
-}
 #botones li:first-child{
   margin-left: 0px;
   border-radius: 200px 10px 10px 200px;
@@ -174,7 +174,26 @@ h3 {
 #botones li{
   border-radius: 0px 200px 200px 0px;
 }
-#botones a {
+#contenedor .section #botones ul li{
+  display: inline-block;
+  background: #222831 ;
+  position: relative;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  margin: 10px;
+}
+#contenedor .section #botones ul li:hover{
+
+  
+  background-color: #EEEEEE;
+  
+}
+#contenedor .section #botones ul li a:hover{
+
+  color: #222831;
+}
+ #botones a {
     transition: color 0.15s linear 0.1s;
 }
 #botones li {
@@ -185,32 +204,8 @@ h3 {
   padding: 20px;
   color:#EEEEEE;
   text-decoration: none;
-}
-#botones a{
-  text-decoration: none;
-  color:#EEEEEE;
-  position: relative;
-}
-#botones li:first-child{
-  margin-left: 0px;
-  border-radius: 200px 10px 10px 200px;
-}
-#botones li{
-  border-radius: 0px 200px 200px 0px;
 }
 
-#botones a {
-    transition: color 0.15s linear 0.1s;
-}
-#botones li {
-    transition: background-color 0.15s linear 0.1s;
-}
-#botones ul li a {
-  display: block; /* Convertimos los elementos a en elementos bloque para manipular el padding */
-  padding: 20px;
-  color:#EEEEEE;
-  text-decoration: none;
-}
 
 #introduccion ul{
   list-style: none;
@@ -249,7 +244,6 @@ h3 {
     height: 700px;
     background: #eee;
     
-    
 }
 .Imagen1{
     width: 20%;
@@ -275,4 +269,10 @@ h3 {
     border: 1px solid #346bab;
     background:#a9b6c6;
     float: right;  
+}
+.Mensajes{
+    width: 100%;
+    text-align:justify;
+    height: 100%;
+    border: 1px solid black;
 }

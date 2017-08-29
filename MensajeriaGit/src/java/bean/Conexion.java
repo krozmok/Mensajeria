@@ -16,15 +16,16 @@ public class Conexion {
     private DBCollection coleccion;
     private DBCursor cursor;
     private DB db;
-
+    protected MongoClient mCliente;
     public Conexion(String DBName) {
         this.DBName = DBName;
         CrearConexion();
     }
     
     public void CrearConexion(){
-        MongoClient mCliente = new MongoClient("127.0.0.1",27017);
+        mCliente = new MongoClient("127.0.0.1",27017);
         db = mCliente.getDB(DBName);
+        
     }
     public boolean ConsultarDatos(String CollectionName, BasicDBObject Datos){
         coleccion = db.getCollection(CollectionName);

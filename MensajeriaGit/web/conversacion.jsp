@@ -4,6 +4,7 @@
     Author     : Paul
 --%>
 
+<%@page import="com.mongodb.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,17 @@
         <%
             String UsuarioPrincipal = sesion.getAttribute("Usuario").toString();
             String UsuarioDestino = request.getParameter("UsuarioD");
+            String BaseDatos = "BDMensajeria";
+            MongoClient mCliente = new MongoClient("127.0.0.1",27017);
+            DB db = mCliente.getDB(BaseDatos);
+            DBCollection coleccion = db.getCollection("Mensaje");
+            BasicDBObject documento = new BasicDBObject();
+            documento.put("UsuarioO", UsuarioPrincipal);
+            documento.put("UsuarioD",UsuarioDestino);
+            DBCursor cursor = coleccion.find(documento);
+            
+            
+            
         %>
         
         <header class="header">
@@ -59,8 +71,18 @@
                         <div class="Imagen2">
                             <%=UsuarioDestino%>
                         </div>
+                        <div class="Mensajes">
+                            <% 
+                                while(cursor.hasNext()){
+                                    DBObject Mens = cursor.next();
+                                    String Mensaje = Mens.get("Mensaje").toString();
+                                    String UsuarioO = Mens.get("UsuarioO").toString();
+                                    out.println(UsuarioO + ">>" + Mensaje + "<br>");
+                                }
+                            %>
+                        </div>
                     </div>
-                    <form class="message-box">
+                        <form class="message-box" method="post" action = "envio.jsp?UsuarioD=<%=UsuarioDestino%>">
                         <input type="text" name="txtMensaje" id="caja_envio" autocomplete = "off">
                         <input type="submit" value="Enviar" id="boton_envio">
                     </form>

@@ -66,8 +66,6 @@
                             
                             String Usuario1 = cursor.next().get("Usuario").toString();
                             if (!Usuario1.equals(Usuario)){
-                                
-                            
                         %>
                         <tr>
                             <td><input type = "submit" name="UsuarioD" value="<%=Usuario1%>"></td>
