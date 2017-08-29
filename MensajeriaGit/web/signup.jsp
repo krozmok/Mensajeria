@@ -59,6 +59,7 @@ and open the template in the editor.
             </form>
             
         </section>
+        </div>
         <div class="footer">
                 <h3>Grupo:<br>
                     <ul>

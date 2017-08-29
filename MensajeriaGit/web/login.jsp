@@ -58,6 +58,7 @@
             <input type ="submit" value="Validar">
         </form>
 	</section>
+        </div>
 	<div class="footer">
                 <h3>Grupo:<br>
                     <ul>

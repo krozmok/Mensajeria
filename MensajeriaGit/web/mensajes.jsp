@@ -41,28 +41,29 @@
             
         %>
         <header class="header">
-			<div class="contenedor">
-				<div class="logo">
-				<h1>STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></h1>
-				</div>
-				<!-- INICIO DEL NAV -->
-				<nav class = "menu">
-					<ul>
-						<li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-						<li ><a class = "Menu" href = "login.jsp">Log In</a></li>
-						<li><a class = "Menu" href="signup.jsp"> Sign UP</a></li>
-						<li><a class = "Menu" href="#"> Soporte</a></li>
-						 <li><a class = "Menu" href="#"> Contactanos</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+            <div class="contenedor">
+                <div class="logo">
+                    <h1><a href="index.jsp">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
+                </div>
+	
+            </div>
+	</header>
+	
+        <nav class = "menu">
+            <ul>
+            <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+            <li> <a class = "Menu" href="perfil.jsp">Mi perfil</a></li>
+            <li ><a class = "Menu" href = "mensajes.jsp">Mensajes</a></li>
+            <li><a class = "Menu" href="#">Archivos</a></li>
+             <li><a class = "Menu" href="#">Usuarios</a></li>
+            </ul>
+        </nav>
         <div id="contenedor">
             <section class="section">
                 <div id="presentacion">
-                LOGEASTE,<%=usuario%> QUE DESEAS HACER?
+                    <h3>MENSAJES DE <%=usuario%></h3>
                 
-                <table border = "1px">
+                <table border = "1px" >
                     <tr>
                         <td>ORIGEN</td>
                         <td>DESTINO</td>
@@ -89,5 +90,6 @@
                 </div>
             </section>
         </div>
+                
     </body>
 </html>
