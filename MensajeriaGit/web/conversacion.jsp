@@ -16,9 +16,15 @@
 	<script src ="https://code.jquery.com/jquery-latest.js"></script>
         <script language="JavaScript" type="text/javascript" src="main.js"></script>
 	<script language="JavaScript" type="text/javascript" src="motor.js"></script>
-    </head>
+        <script>
+            $(document).ready(
+            function() {
+                setInterval(function() {$('.Mensajes')}, 3000);
+            });
+</script>
     <body>
         <%
+            response.setIntHeader("Refresh", 10);
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
         %>
@@ -32,14 +38,6 @@
             String BaseDatos = "BDMensajeria";
             MongoClient mCliente = new MongoClient("127.0.0.1",27017);
             DB db = mCliente.getDB(BaseDatos);
-            DBCollection coleccion = db.getCollection("Mensaje");
-            BasicDBObject documento = new BasicDBObject();
-            documento.put("UsuarioO", UsuarioPrincipal);
-            documento.put("UsuarioD",UsuarioDestino);
-            DBCursor cursor = coleccion.find(documento);
-            
-            
-            
         %>
         
         <header class="header">
@@ -71,13 +69,23 @@
                         <div class="Imagen2">
                             <%=UsuarioDestino%>
                         </div>
-                        <div class="Mensajes">
+                        <div class="Mensajes" >
+                            <script>
+                                
+                            </script>
                             <% 
+                                
+                                DBCollection coleccion = db.getCollection("Mensaje");
+                                DBCursor cursor = coleccion.find();
                                 while(cursor.hasNext()){
+                                    
                                     DBObject Mens = cursor.next();
                                     String Mensaje = Mens.get("Mensaje").toString();
                                     String UsuarioO = Mens.get("UsuarioO").toString();
-                                    out.println(UsuarioO + ">>" + Mensaje + "<br>");
+                                    String UsuarioD = Mens.get("UsuarioD").toString();
+                                    if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
+                                            out.println(UsuarioO + ">>" + Mensaje + "<br>");
+                                        }
                                 }
                             %>
                         </div>

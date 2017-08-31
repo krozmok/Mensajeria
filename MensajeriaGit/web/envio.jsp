@@ -17,16 +17,20 @@
             HttpSession sesion = request.getSession();
             String UsuarioO = sesion.getAttribute("Usuario").toString();
             String Mensaje = request.getParameter("txtMensaje");
-            String UsuarioD = request.getParameter("UsuarioD");
-            String BaseDatos = "BDMensajeria";
-            MongoClient mCliente = new MongoClient("127.0.0.1",27017);
-            DB db = mCliente.getDB(BaseDatos);
-            DBCollection coleccion = db.getCollection("Mensaje");
-            BasicDBObject documento = new BasicDBObject();
-            documento.put("UsuarioO", UsuarioO);
-            documento.put("UsuarioD",UsuarioD);
-            documento.put("Mensaje", Mensaje);
-            coleccion.insert(documento);
+            if(Mensaje != null){
+                String UsuarioD = request.getParameter("UsuarioD");
+                String BaseDatos = "BDMensajeria";
+                MongoClient mCliente = new MongoClient("127.0.0.1",27017);
+                DB db = mCliente.getDB(BaseDatos);
+                DBCollection coleccion = db.getCollection("Mensaje");
+                BasicDBObject documento = new BasicDBObject();
+                documento.put("UsuarioO", UsuarioO);
+                documento.put("UsuarioD",UsuarioD);
+                documento.put("Mensaje", Mensaje);
+                coleccion.insert(documento);
+                
+            }
+            
             
         %>
         <jsp:forward page="conversacion.jsp"/>
