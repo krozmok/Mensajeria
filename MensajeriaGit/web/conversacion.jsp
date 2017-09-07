@@ -9,22 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
-	<script src ="https://code.jquery.com/jquery-latest.js"></script>
-        <script language="JavaScript" type="text/javascript" src="main.js"></script>
-	<script language="JavaScript" type="text/javascript" src="motor.js"></script>
-        <script>
-            $(document).ready(
-            function() {
-                setInterval(function() {$('.Mensajes')}, 3000);
-            });
-</script>
-    <body>
         <%
-            response.setIntHeader("Refresh", 10);
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
         %>
@@ -39,6 +24,61 @@
             MongoClient mCliente = new MongoClient("127.0.0.1",27017);
             DB db = mCliente.getDB(BaseDatos);
         %>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+	<script src ="https://code.jquery.com/jquery-latest.js"></script>
+        <script language="JavaScript" type="text/javascript" src="main.js"></script>
+	<script language="JavaScript" type="text/javascript" src="refresh.js"></script>
+        <script>
+            var seconds = 1; // intervalo de actualizar div
+            var divid = "Mensajes"; // el div que quieres actualizar!
+            var url = "ventanaChat.jsp?" +"UsuarioD="+ '<%=UsuarioDestino%>'; // el archivo de proceso php
+
+                 function objetoajax(){
+
+                     // The XMLHttpRequest object
+
+                     var xmlHttp;
+                     try{
+                         xmlHttp=new XMLHttpRequest(); // Firefox, Opera 8.0+, Safari
+                     }
+                     catch (e){
+                         try{
+                             xmlHttp=new ActiveXObject("Msxml2.XMLHTTP"); // Internet Explorer
+                         }
+                         catch (e){
+                             try{
+                                 xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                             }
+                             catch (e){
+                                 alert("Tu explorador no soporta AJAX.");
+                                 return false;
+                             }
+                         }
+                     }
+
+                     var procesourl = url
+
+                     // The code...
+
+                     xmlHttp.onreadystatechange=function(){
+                         if(xmlHttp.readyState== 4 && xmlHttp.readyState != null){
+                             document.getElementsByClassName(divid).innerHTML=xmlHttp.responseText;
+                             setTimeout('objetoajax()',seconds*1000);
+                         }
+                     }
+                     xmlHttp.open("GET",procesourl,true);
+                     xmlHttp.send(null);
+                 }
+
+                 window.onload = function(){
+                     objetoajax(); // Ejecutamos objetoajax
+                  }
+       </script>
+    <body>
+        
         
         <header class="header">
             <div class="contenedor">
@@ -70,9 +110,7 @@
                             <%=UsuarioDestino%>
                         </div>
                         <div class="Mensajes" >
-                            <script>
-                                
-                            </script>
+                            
                             <% 
                                 
                                 DBCollection coleccion = db.getCollection("Mensaje");

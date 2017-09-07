@@ -14,10 +14,12 @@
     <body>
         <h1>Hello World!</h1>
         <%
-            HttpSession sesionOK = request.getSession();
-            sesionOK.setAttribute("setLoggin","false");
+            //HttpSession sesionOK = request.getSession();
+            session.setAttribute("Usuario", null);
+            session.invalidate();
+            response.sendRedirect("index.jsp");
             
         %>
-        <jsp:forward page = "index.jsp" />
+       
     </body>
 </html>

@@ -22,10 +22,9 @@
             
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("setLoggin") == null) sesion.setAttribute("setLoggin", "false");
+            
             if(sesion.getAttribute("setLoggin").toString().compareTo("true")==0){
-        %>
-        <jsp:forward page="menu.jsp"/>
-        <%
+                response.sendRedirect("menu.jsp");
             }else{}
         %>
         <header class="header">
@@ -52,7 +51,7 @@
 	<section class="section">
                
 	<h1>LOG IN</h1>	
-            <form action = "verificarLogin.jsp" name = "frmMain" method = "post">
+            <form action = "verificarLogin.jsp" name = "frmMain" method = "get">
                 Usuario: <input type = "text" name = "txtUSR"><br>
                 Contraseña: <input type ="password"  name ="txtPASS"><br>
             <input type ="submit" value="Validar">

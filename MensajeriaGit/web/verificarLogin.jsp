@@ -26,25 +26,25 @@
                 HttpSession sesionOK = request.getSession();
                 sesionOK.setAttribute("Usuario", Usuario);
                 sesionOK.setAttribute("setLoggin", "true");
+                response.sendRedirect("menu.jsp");
                 %>
                 
-                <jsp:forward page="menu.jsp"/>
-
+             
         <%
             }else{
-            %>
-            <jsp:forward page="login.jsp"/>
-
-        <%
+                HttpSession sesionOK = request.getSession();
+                sesionOK.setAttribute("Usuario", null);
+                sesionOK.setAttribute("setLoggin", "false");
+                sesionOK.invalidate();
+                response.sendRedirect("login.jsp");
             }
         %>
         
         <%
         }catch(MongoException e){
-            
+            out.println(e);
             %>
-            <jsp:forward page="login.jsp" />
-
+            
         <%
             }
             %>
