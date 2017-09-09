@@ -39,7 +39,7 @@
                  miSesion.Insertar();
                 
             %>
-            <jsp:forward page="login.jsp"/>
+            <jsp:forward page="menu.jsp"/>
                     <%    
                 }
             catch(MongoException e){

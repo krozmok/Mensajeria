@@ -121,17 +121,27 @@
                                     String Mensaje = Mens.get("Mensaje").toString();
                                     String UsuarioO = Mens.get("UsuarioO").toString();
                                     String UsuarioD = Mens.get("UsuarioD").toString();
+                                    String Tipo = Mens.get("Tipo").toString();
                                     if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
-                                            out.println(UsuarioO + ">>" + Mensaje + "<br>");
-                                        }
+                                        if(Tipo.compareTo("1") == 0){
+                                             out.println(UsuarioO + ">>");
+                                        %>
+                                        <a href="Archivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
+                                        <%
+                                        }                                        
+                                        else out.println(UsuarioO + ">>" + Mensaje + "<br>");
+                                    }
                                 }
                             %>
                         </div>
                     </div>
-                        <form class="message-box" method="post" action = "envio.jsp?UsuarioD=<%=UsuarioDestino%>">
-                        <input type="text" name="txtMensaje" id="caja_envio" autocomplete = "off">
-                        <input type="submit" value="Enviar" id="boton_envio">
-                    </form>
+                        <form class="message-box" method="post" enctype="multipart/form-data" action = "envio.jsp">
+                            <input type="hidden" name = "UsuarioD" value= <%=UsuarioDestino%>>
+                            <input type="text" name="txtMensaje" id="caja_envio" autocomplete = "off">
+                            <input type="file" name="archivo" multiple="">
+                            <input type="submit" value="Enviar" id="boton_envio">
+                        </form>
+                        
                 </div>
             </section>
         </div>
