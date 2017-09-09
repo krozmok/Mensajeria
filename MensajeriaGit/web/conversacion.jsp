@@ -32,7 +32,7 @@
         <script language="JavaScript" type="text/javascript" src="main.js"></script>
 	<script language="JavaScript" type="text/javascript" src="refresh.js"></script>
         <script>
-            var seconds = 1; // intervalo de actualizar div
+            /*var seconds = 1; // intervalo de actualizar div
             var divid = "Mensajes"; // el div que quieres actualizar!
             var url = "ventanaChat.jsp?" +"UsuarioD="+ '<%=UsuarioDestino%>'; // el archivo de proceso php
 
@@ -75,7 +75,7 @@
 
                  window.onload = function(){
                      objetoajax(); // Ejecutamos objetoajax
-                  }
+                  }*/
        </script>
     <body>
         
@@ -94,8 +94,8 @@
             <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
             <li> <a class = "Menu" href="perfil.jsp">Mi perfil</a></li>
             <li ><a class = "Menu" href = "mensajes.jsp">Mensajes</a></li>
-            <li><a class = "Menu" href="#">Archivos</a></li>
-             <li><a class = "Menu" href="#">Usuarios</a></li>
+            <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
+             <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
             </ul>
         </nav>
         

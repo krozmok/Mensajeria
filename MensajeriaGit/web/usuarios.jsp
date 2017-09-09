@@ -1,6 +1,6 @@
 <%-- 
-    Document   : enviarmensjae
-    Created on : Aug 24, 2017, 8:23:30 AM
+    Document   : usuarios
+    Created on : Sep 9, 2017, 3:21:05 PM
     Author     : Paul
 --%>
 
@@ -9,17 +9,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-		<script src ="https://code.jquery.com/jquery-latest.js"></script>
-		<script language="JavaScript" type="text/javascript" src="main.js"></script>
-		<script language="JavaScript" type="text/javascript" src="motor.js"></script>
-        <title>JSP Page</title>
-    </head>
-    <body>
         <%
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
@@ -28,6 +17,18 @@
         <%
             }else{}
         %>
+        <%String Usuario = sesion.getAttribute("Usuario").toString(); %>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Menu</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<script src ="https://code.jquery.com/jquery-latest.js"></script>
+		<script language="JavaScript" type="text/javascript" src="main.js"></script>
+		<script language="JavaScript" type="text/javascript" src="motor.js"></script>
+        <title>Usuarios</title>
+    </head>
+    <body>
         <header class="header">
             <div class="contenedor">
                 <div class="logo">
@@ -36,7 +37,8 @@
 	
             </div>
 	</header>
-        <nav class = "menu">
+	
+	<nav class = "menu">
             <ul>
             <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
             <li> <a class = "Menu" href="perfil.jsp">Mi perfil</a></li>
@@ -45,36 +47,32 @@
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
             </ul>
         </nav>
+       
         <div id="contenedor">
             <section class="section">
                 <div id="presentacion">
-                    <%String Usuario = sesion.getAttribute("Usuario").toString();%>
+                
+                <div id ="botones">
                     
-                    <h3>A quien desea enviar un mensaje, <%=Usuario%></h3>
                     <%
                         String BaseDatos = "BDMensajeria";
                         MongoClient mCliente = new MongoClient("127.0.0.1",27017);
                         DB db = mCliente.getDB(BaseDatos);
                         DBCollection coleccion = db.getCollection("Usuario");
-                        DBCursor cursor = coleccion.find();
-                        %>
-                        <form name="fmEnviarMensaje" method="get" action ="conversacion.jsp">
-                        
-                        
-                        <%
-                        while(cursor.hasNext()){
-                            
-                            String Usuario1 = cursor.next().get("Usuario").toString();
-                            if (!Usuario1.equals(Usuario)){
-                        %>
-                        
-                            <td><input class = "btn" type = "submit" name="UsuarioD" value="<%=Usuario1%>"></td>
-                        
-                        <%
-                            }
+                        BasicDBObject Usuarios = new BasicDBObject();
+                        Usuarios.put("Conectado", true);
+                        Cursor C = coleccion.find(Usuarios);
+                        out.println("<h3>USUARIOS CONECTADOS</h3>");
+                        while(C.hasNext()){
+                            C.next();
+                            out.println("hola");
                         }
+                        Usuarios = new BasicDBObject();
+                        Usuarios.put("Conectado", false);
+                        out.println("<h3>USUARIOS DESCONECTADOS</h3>");
                     %>
-                    </form>
+                   
+                </div>
                 </div>
             </section>
         </div>
@@ -87,6 +85,6 @@
                         <li>Rimayhuaman Grajeda Brayan</li>
                     </ul>
                 </h3>
-        </div>            
+        </div>
     </body>
 </html>

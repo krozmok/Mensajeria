@@ -9,6 +9,39 @@ html {
     margin: 0;
     box-sizing: border-box;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #111;
+}
+tr:first-child:hover{
+    
+}
+
+tr:hover {background-color: #f5f5f5}
+
+.btn {
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 12px;
+  font-family: Arial;
+  color: #eee;
+  font-size: 22px;
+  background: #37878a;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border:#00ADB5;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
 .contenedor{
     margin: auto;
     position: relative;
@@ -169,10 +202,10 @@ h3 {
 }
 #botones li:first-child{
   margin-left: 0px;
-  border-radius: 200px 10px 10px 200px;
+  //border-radius: 200px 10px 10px 200px;
 }
 #botones li{
-  border-radius: 0px 200px 200px 0px;
+  //border-radius: 0px 200px 200px 0px;
 }
 #contenedor .section #botones ul li{
   display: inline-block;
