@@ -41,4 +41,9 @@ public class Conexion {
         coleccion = db.getCollection(CollectionName);
         coleccion.insert(Datos);
     }
+    public void Update(String CollectionName, BasicDBObject DatosViejos, BasicDBObject DatosNuevos)
+    {
+        coleccion = db.getCollection(CollectionName);
+        coleccion.update(DatosViejos,DatosNuevos);
+    }
 }

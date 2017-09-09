@@ -15,6 +15,7 @@ public class Login {
     private String aUsuario;
     private String aContraseña;
     private Conexion Con;
+    
 
     public Login() {
     }
@@ -40,6 +41,18 @@ public class Login {
         BasicDBObject Datos = new BasicDBObject();
         Datos.put("Usuario",aUsuario);
         Datos.put("Contraseña", aContraseña);
-        return Con.ConsultarDatos("Usuario", Datos);
+        Cursor cur = Con.RecuperarDatos("Usuario", Datos);
+        if (cur.hasNext()) {
+            //Creamos un nuevo DBObject de manera que se actualizarán
+            //las sesiones y el estado de conectado
+            BasicDBObject update = new BasicDBObject();
+            update.append("$inc", new BasicDBObject().append("Sesiones", 1));
+            update.append("$set", new BasicDBObject().append("Conectado", true));
+            
+            Con.Update("Usuario", Datos, update);
+            return true;
+        }
+        else
+            return false;
     }
 }

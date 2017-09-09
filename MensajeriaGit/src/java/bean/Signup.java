@@ -21,6 +21,8 @@ public class Signup {
     private String aPreguntaSecreta;
     private String aRespuesta;
     private Conexion aBDCon;
+    private int Sesiones = 0;
+    private boolean Conectado = false;
 
     public Signup() {
     }
@@ -99,7 +101,8 @@ public class Signup {
         Documento.put("Contraseña", this.aContrasena);
         Documento.put("PreguntaSecreta", this.aPreguntaSecreta);
         Documento.put("Respuesta", this.aRespuesta);
+        Documento.put("Sesiones",this.Sesiones);
+        Documento.put("Conectado",this.Conectado);
         this.aBDCon.InsertarDatos("Usuario", Documento);
-        
     }
 }

@@ -24,7 +24,8 @@
                 String Sexo = request.getParameter("rdioSexo");
                 String Pass = request.getParameter("txtpass");
                 String Pregunta = request.getParameter("txtpregunta");
-                String Respuesta = request.getParameter("txtrespuesta");                
+                String Respuesta = request.getParameter("txtrespuesta");
+                
         %>
             <jsp:useBean id="miSesion" class="bean.Signup" scope = "session">
                 <jsp:setProperty name="miSesion" property = "aNombre" value="<%=Nombre%>" />
@@ -36,14 +37,14 @@
                 <jsp:setProperty name="miSesion" property = "aRespuesta" value="<%=Respuesta%>" />
             </jsp:useBean>
             <%
-                 miSesion.Insertar();
+                miSesion.Insertar();
                 
             %>
             <jsp:forward page="menu.jsp"/>
                     <%    
                 }
             catch(MongoException e){
-               // out.println(e);
+               out.println(e);
             }
             
             

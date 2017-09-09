@@ -45,6 +45,7 @@ and open the template in the editor.
         <div id = "contenedor">
         <section class="section">
             <h1>SIGN UP</h1>
+            
             <form name = "frmSignUp" method = "post" action="validarRegistro.jsp">
             Nombre: <input type = "text" name = "txtNombre"><br>
             Nickname: <input type = "text" name = "txtNick"><br>
