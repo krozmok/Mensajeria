@@ -66,7 +66,6 @@
                 <table border = "1px" >
                     <tr>
                         <td>ORIGEN</td>
-                        <td>DESTINO</td>
                         <td>MENSAJE</td>
                     </tr>
                     <%
@@ -81,9 +80,8 @@
                             
                     %>
                     <tr>
-                        <td><%=UsuarioO%></td>
-                        <td><%=UsuarioD%></td>
-                        <td><%=mensaje%></td>
+                        <td><a href="conversacion.jsp?UsuarioD=<%=UsuarioO%>"><%=UsuarioO%></a></td>
+                        <td><a href="conversacion.jsp?UsuarioD=<%=UsuarioO%>"><%=mensaje%></a></td>
                     </tr>
                     <%
                         }
