@@ -16,34 +16,35 @@
     </head>
     <body>
         <%
-            try{
-		String pass_current = request.getParameter("txtpass");
-		String Nombre = request.getParameter("txtNombre");
-		String Sexo = request.getParameter("rdioSexo");
-		String pass_new = request.getParameter("txtnpass");
-        %>
-	<jsp:useBean id="miSesion" class="bean.Signup" scope = "session">
-	    <jsp:setProperty name="miSesion" property = "aNombre" value="<%=Nombre%>" />
-	    <%--
-	    <jsp:setProperty name="miSesion" property = "aUsuario" value="<%=Usuario%>" />
-	    <jsp:setProperty name="miSesion" property = "aFechaNacimiento" value="<%=Nacimiento%>" />
-	    --%>
-	    <jsp:setProperty name="miSesion" property = "aSexo" value="<%=Sexo%>" />
-	    <%--
-	    <jsp:setProperty name="miSesion" property = "aContrasena" value="<%=Pass%>" />
-	    <jsp:setProperty name="miSesion" property = "aPreguntaSecreta" value="<%=Pregunta%>" />
-	    <jsp:setProperty name="miSesion" property = "aRespuesta" value="<%=Respuesta%>" />
-	    --%>
-	</jsp:useBean>
-	<%
-	    miSesion.Insertar();
-	%>
-        <jsp:forward page="menu.jsp"/>
-	<%
-	    }
-	    catch(MongoException e){
-               out.println(e);
-            }
+        //Obtener los datos ingresados en el form
+        String pass_current = request.getParameter("txtpass");
+        String name = request.getParameter("txtNombre");
+        String sex = request.getParameter("rdioSexo"); //in(null, H, M)
+        String pass_new = request.getParameter("txtnpass");
+        String pass_new_conf = request.getParameter("txtpassconfirm");
+        
+        //Hacer la actualización en la base de datos        
+        //HttpSession sesionOK = request.getSession();
+            String UsuarioPrincipal = session.getAttribute("Usuario").toString();
+            String BaseDatos = "BDMensajeria";
+            MongoClient mCliente = new MongoClient("25.94.233.89",27017);
+            DB db = mCliente.getDB(BaseDatos);
+            DBCollection col = db.getCollection("Usuario");
+            //Este primer BasicDBObject es el find del documento
+            BasicDBObject DatosV = new BasicDBObject();
+            DatosV.put("Usuario",UsuarioPrincipal);
+            //Este segundo BasicDBObject es lo que se actualizará
+            BasicDBObject DatosN = new BasicDBObject();
+            //Al poner un $set nos permite actualizar solo un valor del documento
+            //Si no se pone un $set entonces el documento entero será actualizado
+            DatosN.append("$set", new BasicDBObject("Conectado",false));
+        //DatosN.append("$set", new BasicDBObject("Conectado",false));
+            col.update(DatosV, DatosN);
+            session.setAttribute("Usuario", null);
+            session.invalidate();
+            
+            response.sendRedirect("index.jsp");
+            
         %>
     </body>
 </html>
