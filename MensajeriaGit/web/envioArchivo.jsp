@@ -4,7 +4,11 @@
     Author     : Isaac
 --%>
 
-<%@page import="com.mongodb.*"%>
+
+<%@page import="com.mongodb.BasicDBObject"%>
+<%@page import="com.mongodb.DBCollection"%>
+<%@page import="com.mongodb.DB"%>
+<%@page import="com.mongodb.MongoClient"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +22,7 @@
             String UsuarioO = sesion.getAttribute("Usuario").toString();
             String Mensaje = request.getParameter("Mensaje");
             out.println(Mensaje);
-            if(Mensaje != ""){
+            if(Mensaje.compareTo("") != 0){
                 String UsuarioD = request.getParameter("UsuarioD");
                 String BaseDatos = "BDMensajeria";
                 MongoClient mCliente = new MongoClient("25.94.233.89",27017);
@@ -30,6 +34,8 @@
                 documento.put("Mensaje", Mensaje);
                 documento.put("Tipo", 1);
                 coleccion.insert(documento);
+            }
         %>
+        <jsp:forward page = "archivos.jsp"/>
     </body>
 </html>
