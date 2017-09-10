@@ -32,7 +32,7 @@
 
         salida.flush();
         salida.close();*/
-        MongoClient miCliente = new MongoClient("127.0.0.1", 27017);
+        MongoClient miCliente = new MongoClient("25.94.233.89", 27017);
             DB baseDatos = miCliente.getDB("BDMensajeria");
             GridFS fsArchivo = new GridFS(baseDatos, "Archivos");
             //GridFSBucket gridFSBucket = GridFSBuckets.create(baseDatos, "misArchivos");

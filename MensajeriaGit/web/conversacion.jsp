@@ -21,7 +21,7 @@
             String UsuarioPrincipal = sesion.getAttribute("Usuario").toString();
             String UsuarioDestino = request.getParameter("UsuarioD");
             String BaseDatos = "BDMensajeria";
-            MongoClient mCliente = new MongoClient("127.0.0.1",27017);
+            MongoClient mCliente = new MongoClient("25.94.233.89",27017);
             DB db = mCliente.getDB(BaseDatos);
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
