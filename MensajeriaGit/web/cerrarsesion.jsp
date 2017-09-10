@@ -18,7 +18,7 @@
             //HttpSession sesionOK = request.getSession();
             String UsuarioPrincipal = session.getAttribute("Usuario").toString();
             String BaseDatos = "BDMensajeria";
-            MongoClient mCliente = new MongoClient("127.0.0.1",27017);
+            MongoClient mCliente = new MongoClient("25.94.233.89",27017);
             DB db = mCliente.getDB(BaseDatos);
             DBCollection col = db.getCollection("Usuario");
             //Este primer BasicDBObject es el find del documento
