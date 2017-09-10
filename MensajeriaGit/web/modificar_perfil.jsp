@@ -8,10 +8,64 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Modificar perfil de usuario</title>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<script src ="https://code.jquery.com/jquery-latest.js"></script>
     </head>
     <body>
-        <h1>Hello Prros!</h1>
+        <%
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("setLoggin") == null) sesion.setAttribute("setLoggin", "false");
+            if(sesion.getAttribute("setLoggin").toString().compareTo("true")==0){
+        %>
+        <jsp:forward page="menu.jsp"/>
+        <%
+            }else{}
+        %>
+        <header class="header">
+            <div class="contenedor">
+            <div class="logo">
+                <h1><a href="index.jsp">STE MAIL<br> <i class="fa fa-envelope-o" aria-hidden="true"></i></a></h1>
+            </div>
+	
+            </div>
+	</header>
+        <nav class = "menu">
+            <ul>
+            <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+            <li> <a class = "Menu" href="signup.jsp"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>
+            <li ><a class = "Menu" href = "login.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i> Log In</a></li>
+            <li><a class = "Menu" href="#"><i class="fa fa-life-ring" aria-hidden="true"></i> Soporte</a></li>
+	    <li><a class = "Menu" href="#"><i class="fa fa-phone" aria-hidden="true"></i> Contactanos</a></li>
+            </ul>
+        </nav>
+        <div id = "contenedor">
+        <section class="section">
+            <h1>Modificar información de usuario</h1>
+            
+            <form name = "frmModify" method = "post" action="validar_modificacion.jsp">
+		Contraseña: <input type = "text" name = "txtpass"><br><br>
+		Nombre: <input type = "text" name = "txtNombre"><br>
+		Sexo : <input type = "radio" name = "rdioSexo" value = "H"> Hombre   <input type = "radio" name = "rdioSexo" value = "H"> Mujer <br>
+		Nueva contraseña: <input type = "text" name = "txtnpass"><br>
+		Confirmar nueva contraseña: <input type = "text" name = "txtpassconfirm"><br>
+		<input type="submit" value="Registrarse">
+            </form>
+            
+        </section>
+        </div>
+        <div class="footer">
+                <h3>Grupo:<br>
+                    <ul>
+                        <li>Caceres Thamiña Paul Vladimir</li>
+                        <li>Campos Ardiles Isaac</li>
+                        <li>Leon Malpartida Jared</li>
+                        <li>Rimayhuaman Grajeda Brayan</li>
+                    </ul>
+                </h3>
+        </div>
     </body>
 </html>
