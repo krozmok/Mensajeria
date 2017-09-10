@@ -81,11 +81,11 @@
                     %>
                     <tr>
                         <td><a href="conversacion.jsp?UsuarioD=<%=UsuarioO%>"><%=UsuarioO%></a></td>
-                        <td><a href="conversacion.jsp?UsuarioD=<%=UsuarioO%>"><%=mensaje%></a></td>
+                        <td><%=mensaje%></td>
                     </tr>
                     <%
                         }
-                        }
+                    }
                     %>
                 </table>
                 
