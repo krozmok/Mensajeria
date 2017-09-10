@@ -126,7 +126,7 @@
                                         if(Tipo.compareTo("1") == 0){
                                              out.println(UsuarioO + ">>");
                                         %>
-                                        <a href="Archivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
+                                        <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
                                         <%
                                         }                                        
                                         else out.println(UsuarioO + ">>" + Mensaje + "<br>");
