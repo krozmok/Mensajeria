@@ -70,7 +70,7 @@
                         DBCursor cursor = coleccion.find(documento);
 
                     %>
-                    <table border = "1px" >
+                    <table>
                         <form method = "get" action = "envio.jsp">
                             <%
                                 while(cursor.hasNext())
@@ -81,12 +81,33 @@
                                     String mensaje = Mensaje.get("Mensaje").toString();
                             %>
                                 <tr>
-                                    <td><a href="DescargarArchivos.jsp?Archivo=<%=mensaje%>" download="<%=mensaje%>"><%=mensaje%></a>
-                                    <input type="radio" name = "envio" value = "<%=mensaje%>"><br></td>
+                                    <td><a href="DescargarArchivos.jsp?Archivo=<%=mensaje%>" download="<%=mensaje%>"><%=mensaje%></a><br></td>
+                                    <td><input type="radio" name = "envio" value = "<%=mensaje%>"><br></td>
                                 </tr>
                             <%
                                 }
                             %>
+                            <tr>
+                                <td><select name="UsuarioD  ">
+                                    <%
+                                        DBCollection coleccionUsuario = db.getCollection("Usuario");
+                                        cursor = coleccionUsuario.find();
+                                        while(cursor.hasNext())
+                                        {
+                                            DBObject User = cursor.next();
+                                            String U = User.get("Usuario").toString();
+                                            if(U.compareTo(usuario) != 0){
+                                                
+                                            
+                                    %>
+                                    <option value="<%=U%>"><%=U%></option>
+                                    <%
+                                        }
+                                        }
+                                    %>
+                                </select></td>
+                                <td><input type="submit" value="Enviar"></td>
+                            </tr>
                         </form>   
                     </table>
                     <%
@@ -96,7 +117,7 @@
                         <form class="message-box" method="post" enctype="multipart/form-data" action = "envio.jsp">
                             <input type="hidden" name = "UsuarioD" value= <%=UsuarioO%>>
                             <input type="file" name="archivo" multiple="">
-                            <input type="submit" value="Enviar">
+                            <input type="submit" value="Subir Archivo">
                         </form>
                     </div>
                 </div>
