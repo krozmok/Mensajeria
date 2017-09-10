@@ -201,13 +201,6 @@ h3 {
   overflow: hidden;
 }
 
-
-#botones li:first-child{
-  margin-left: 0px;
-  //border-radius: 200px 10px 10px 200px;
-}
-
-
 #contenedor .section #botones ul li{
   display: inline-block;
   background: #222831 ;
