@@ -55,6 +55,7 @@
                 <div id ="botones">
                     
                     <%
+                        
                         String BaseDatos = "BDMensajeria";
                         MongoClient mCliente = new MongoClient("127.0.0.1",27017);
                         DB db = mCliente.getDB(BaseDatos);
@@ -63,15 +64,38 @@
                         Usuarios.put("Conectado", true);
                         Cursor C = coleccion.find(Usuarios);
                         out.println("<h3>USUARIOS CONECTADOS</h3>");
+                    %>
+                    <form name="fmEnviarMensaje" method="get" action ="conversacion.jsp">
+                    <%
                         while(C.hasNext()){
-                            C.next();
-                            out.println("hola");
+                            DBObject Us = C.next();
+                            String Nick = Us.get("Usuario").toString();
+                            if (!Usuario.equals(Nick)) {
+                    %>
+                            <input class="btn" name = "UsuarioD" type ="submit" value="<%=Nick%>" />
+                    <%
+                                }
                         }
+                            %>
+                    </form>
+                    <form name="fmEnviarMensaje" method="get" action ="conversacion.jsp">
+                            <%
+                        
                         Usuarios = new BasicDBObject();
                         Usuarios.put("Conectado", false);
                         out.println("<h3>USUARIOS DESCONECTADOS</h3>");
+                        C = coleccion.find(Usuarios);
+                     while(C.hasNext()){
+                            DBObject Us = C.next();
+                            String Nick = Us.get("Usuario").toString();
+                            if (!Usuario.equals(Nick)) {
                     %>
-                   
+                            <input class="btn" name = "UsuarioD" type ="submit" value="<%=Nick%>" />
+                    <%
+                                }
+                        }
+                            %>
+                   </form>
                 </div>
                 </div>
             </section>
