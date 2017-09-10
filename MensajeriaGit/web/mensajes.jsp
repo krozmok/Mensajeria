@@ -76,6 +76,9 @@
                             String UsuarioO = Mensaje.get("UsuarioO").toString();
                             String UsuarioD = Mensaje.get("UsuarioD").toString();
                             String mensaje = Mensaje.get("Mensaje").toString();
+                            if(UsuarioO.compareTo(UsuarioD) != 0){
+                                
+                            
                     %>
                     <tr>
                         <td><%=UsuarioO%></td>
@@ -83,6 +86,7 @@
                         <td><%=mensaje%></td>
                     </tr>
                     <%
+                        }
                         }
                     %>
                 </table>
