@@ -40,7 +40,8 @@
             <ul>
             <li ><a class = "Logo" href = "index.jsp"> <b>STE MAIL</b><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
             <li> <a class = "Menu" href="perfil.jsp">Mi perfil</a></li>
-            <li ><a class = "Menu" href = "mensajes.jsp">Mensajes</a></li>
+            <li ><a class = "Menu" href = "mensajes.jsp">Ver Mensajes</a></li>
+            <li ><a class = "Menu" href = "enviarmensaje.jsp">Enviar Mensajes</a></li>
             <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
             </ul>
