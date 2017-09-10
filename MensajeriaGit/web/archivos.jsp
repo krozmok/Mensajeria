@@ -32,6 +32,14 @@
 		<script language="JavaScript" type="text/javascript" src="motor.js"></script>
     </head>
     <body>
+        <%
+            HttpSession sesio = request.getSession();
+            if(sesio.getAttribute("setLoggin") == null || sesio.getAttribute("setLoggin").toString().compareTo("true")!=0){
+        %>
+        <jsp:forward page="login.jsp"/>
+        <%
+            }else{}
+        %>
        <header class="header">
             <div class="contenedor">
                 <div class="logo">
@@ -71,24 +79,22 @@
 
                     %>
                     <table>
-                        <form method = "get" action = "envio.jsp">
+                        <form method = "get" action = "envioArchivo.jsp">
                             <%
                                 while(cursor.hasNext())
                                 {
                                     DBObject Mensaje = cursor.next();
-                                    String UsuarioO = Mensaje.get("UsuarioO").toString();
-                                    String UsuarioD = Mensaje.get("UsuarioD").toString();
                                     String mensaje = Mensaje.get("Mensaje").toString();
                             %>
                                 <tr>
                                     <td><a href="DescargarArchivos.jsp?Archivo=<%=mensaje%>" download="<%=mensaje%>"><%=mensaje%></a><br></td>
-                                    <td><input type="radio" name = "envio" value = "<%=mensaje%>"><br></td>
+                                    <td><input type="radio" name = "Mensaje" value = "<%=mensaje%>"><br></td>
                                 </tr>
                             <%
                                 }
                             %>
                             <tr>
-                                <td><select name="UsuarioD  ">
+                                <td><select name="UsuarioD">
                                     <%
                                         DBCollection coleccionUsuario = db.getCollection("Usuario");
                                         cursor = coleccionUsuario.find();
