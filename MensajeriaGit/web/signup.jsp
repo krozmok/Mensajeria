@@ -14,6 +14,7 @@ and open the template in the editor.
 		<script src ="https://code.jquery.com/jquery-latest.js"></script>
 		<script language="JavaScript" type="text/javascript" src="main.js"></script>
 		<script language="JavaScript" type="text/javascript" src="motor.js"></script>
+                
     </head>
     <body>
         <%

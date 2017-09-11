@@ -44,6 +44,7 @@
             <li ><a class = "Menu" href = "enviarmensaje.jsp">Enviar Mensajes</a></li>
             <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
+             <li><a class ="Menu" href="cerrarsesion.jsp">Sign Out</a></li>
             </ul>
         </nav>
         <div id="contenedor">

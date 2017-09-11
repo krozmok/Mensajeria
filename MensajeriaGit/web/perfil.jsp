@@ -4,6 +4,7 @@
     Author     : Paul
 --%>
 
+<%@page import="com.mongodb.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,7 @@
 	<script src ="https://code.jquery.com/jquery-latest.js"></script>
 	<script language="JavaScript" type="text/javascript" src="main.js"></script>
 	<script language="JavaScript" type="text/javascript" src="motor.js"></script>
+        
     </head>
     <body>
         <%
@@ -29,6 +31,16 @@
             HttpSession sesionOK = request.getSession();
             String usuario = sesionOK.getAttribute("Usuario").toString();
         %>
+        <%
+                        String BaseDatos = "BDMensajeria";
+                        MongoClient mCliente = new MongoClient("25.94.233.89",27017);
+                        DB db = mCliente.getDB(BaseDatos);
+                        DBCollection C = db.getCollection("Usuario");
+                        BasicDBObject Datosusuario= new BasicDBObject();
+                        Datosusuario.put("Usuario", usuario);
+                        Cursor cursor = C.find(Datosusuario);
+                        DBObject Usuario = cursor.next();
+                    %>
         <header class="header">
             <div class="contenedor">
                 <div class="logo">
@@ -46,6 +58,7 @@
             <li ><a class = "Menu" href = "enviarmensaje.jsp">Enviar Mensajes</a></li>
             <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
+             <li><a class ="Menu" href="cerrarsesion.jsp">Sign Out</a></li>
             </ul>
         </nav>
         <div id="contenedor">
@@ -56,12 +69,12 @@
                 </div>
                 <div id= "Datos">
                     <%
-                        
+                        out.println("<h3> Nombre <br>" + Usuario.get("Nombre") + "</h3><br>");
+                        out.println("<h3> Usuario <br>" + Usuario.get("Usuario") + "</h3><br>");
+                        out.println("<h3> Fecha de Nacimiento <br>" + Usuario.get("FechaNacimiento") + "</h3><br>");
                     %>
                 </div>
-                <div id= "Descripción">
-                    
-                </div>
+                
                 
             </section>
             
