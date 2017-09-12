@@ -71,12 +71,10 @@
                         String usuario = "";
                         HttpSession sesionOK = request.getSession();
                         usuario = sesionOK.getAttribute("Usuario").toString();
-
                         BasicDBObject documento = new BasicDBObject();
                         documento.put("UsuarioD", usuario);
                         documento.put("UsuarioO", usuario);
                         DBCursor cursor = coleccion.find(documento);
-
                     %>
                     <table>
                         <form method = "get" action = "envioArchivo.jsp">
