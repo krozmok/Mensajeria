@@ -33,7 +33,7 @@ en la BD.
                         DB db = mCliente.getDB(BaseDatos);
                         DBCollection C = db.getCollection("Usuario");
                         BasicDBObject Datosusuario= new BasicDBObject();
-                        String usuario = "krozmok";//session.getAttribute("Usuario").toString();
+                        String usuario = session.getAttribute("Usuario").toString();
                         Datosusuario.put("Usuario", usuario);
                         Cursor cursor = C.find(Datosusuario);
                         DBObject Usuario = cursor.next();
