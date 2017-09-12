@@ -53,7 +53,7 @@
 		Sexo : <input type = "radio" name = "rdioSexo" value = "H"> Hombre   <input type = "radio" name = "rdioSexo" value = "H"> Mujer <br>
 		Nueva contraseña: <input type = "text" name = "txtnpass"><br>
 		Confirmar nueva contraseña: <input type = "text" name = "txtpassconfirm"><br>
-		<input type="submit" value="Registrarse">
+		<input type="submit" value="Confirmar">
             </form>
             
         </section>
