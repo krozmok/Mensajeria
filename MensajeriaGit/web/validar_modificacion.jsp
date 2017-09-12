@@ -35,7 +35,6 @@
 	doc.put("Contraseña", pass_current);
 	DBCursor cursor = coleccion.find(doc);
 	if(cursor.hasNext() && pass_new.equals(pass_new_conf)){
-	    
 	    BasicDBObject doc_update = new BasicDBObject();
 	    doc_update.append("$set", new BasicDBObject().append("Nombre", name));
             coleccion.update(doc, doc_update);
@@ -50,33 +49,9 @@
 	    %>
             out.print("else");
 	    <script>alert('Contraseña incorrecta. Inténtelo nuevamente');</script>
-	    <%-- <jsp:forward page="modificar_perfil.jsp"/> --%>
+	    <jsp:forward page="modificar_perfil.jsp"/>
 	    <%
 	}
-	
-	
-	
-	
-	
-        /*//HttpSession sesionOK = request.getSession();
-	String UsuarioPrincipal = session.getAttribute("Usuario").toString();
-	String BaseDatos = "BDMensajeria";
-	MongoClient mCliente = new MongoClient("25.94.233.89",27017);
-	DB db = mCliente.getDB(BaseDatos);
-	DBCollection col = db.getCollection("Usuario");
-	//Este primer BasicDBObject es el find del documento
-	BasicDBObject DatosV = new BasicDBObject();
-	DatosV.put("Usuario",UsuarioPrincipal);
-	//Este segundo BasicDBObject es lo que se actualizará
-	BasicDBObject DatosN = new BasicDBObject();
-	//Al poner un $set nos permite actualizar solo un valor del documento
-	//Si no se pone un $set entonces el documento entero será actualizado
-	DatosN.append("$set", new BasicDBObject("Conectado",false));
-	//DatosN.append("$set", new BasicDBObject("Conectado",false));
-	col.update(DatosV, DatosN);
-	session.setAttribute("Usuario", null);
-	session.invalidate();
-	response.sendRedirect("index.jsp");*/
         %>
     </body>
 </html>
