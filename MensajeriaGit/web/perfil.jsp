@@ -4,6 +4,8 @@
     Author     : Paul
 --%>
 
+<%@page import="java.io.OutputStream"%>
+<%@page import="com.mongodb.gridfs.*"%>
 <%@page import="com.mongodb.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -65,7 +67,8 @@
             <section class="section">
                 <div id = "perfil-image">
                     <h3><font style="text-transform: uppercase"><%=usuario%></font> <br></h3> 
-                    <img src="img/lovecraft.png" alt="png">
+                    <img src="04muestraImg.jsp" width="200px">
+                    
                 </div>
                 <div id= "Datos">
                     <%
