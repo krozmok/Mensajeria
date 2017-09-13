@@ -53,6 +53,7 @@
             
             salida.flush();
             salida.close();
+            miCliente.close();
     %>
     <body>
         <h1>Hello World!</h1>

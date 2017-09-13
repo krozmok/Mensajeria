@@ -39,6 +39,7 @@ en la BD.
                         DBObject Usuario = cursor.next();
                         GridFS fsArchivo = new GridFS(db, "Archivos");
                         
+                        
             try{
                             String Imagen = Usuario.get("ImgPerfil").toString();
                             out.println(Imagen);
@@ -48,6 +49,7 @@ en la BD.
                             imgPmostrar.writeTo(salida);
                             salida.flush();
                             salida.close(); 
+                            mCliente.close();
                         }catch(Exception e){
                             String Imagen = "default.jpg";
                             GridFSDBFile imgPmostrar = fsArchivo.findOne(Imagen);
@@ -56,6 +58,7 @@ en la BD.
                             imgPmostrar.writeTo(salida);
                             salida.flush();
                             salida.close();
+                            mCliente.close();
                         }
         %>
     </body>

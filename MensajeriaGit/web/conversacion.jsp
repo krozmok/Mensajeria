@@ -24,60 +24,15 @@
         <%
             String UsuarioPrincipal = sesion.getAttribute("Usuario").toString();
             String UsuarioDestino = request.getParameter("UsuarioD");
-            String BaseDatos = "BDMensajeria";
-            MongoClient mCliente = new MongoClient("25.94.233.89",27017);
-            DB db = mCliente.getDB(BaseDatos);
+            
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="style.css">
 	<script src ="https://code.jquery.com/jquery-latest.js"></script>
-        
-        <script language="JavaScript" type="text/javascript">
-        function refreshdiv(UsuarioO,UsuarioD){
-        var cadena = "UsuarioO="+UsuarioO+"&UsuarioD="+UsuarioD;
-        var seconds = 1; // intervalo de actualizar div
-        var divid = "Mensajes"; // el div que quieres actualizar!
-        var url = "ventanaChat.jsp";// el archivo de proceso php
-
-                 
-                     var xmlHttp;
-                     try{
-                         xmlHttp=new XMLHttpRequest(); // Firefox, Opera 8.0+, Safari
-                     }
-                     catch (e){
-                         try{
-                             xmlHttp=new ActiveXObject("Msxml2.XMLHTTP"); // Internet Explorer
-                         }
-                         catch (e){
-                             try{
-                                 xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-                             }
-                             catch (e){
-                                 alert("Tu explorador no soporta AJAX.");
-                                 return false;
-                             }
-                         }
-                     }
-                     var timestamp = parseInt(new Date().getTime().toString().substring(0,10));
-                     
-                     var nocacheurl = url + "?t=" + timestamp; 
-                     
-                     // The code...
-
-                     xmlHttp.onreadystatechange=function(){
-                         if(xmlHttp.readyState === 4 && xmlHttp.readyState !== null){
-                             document.getElementById(divid).innerHTML=xmlHttp.responseText;
-                             var timer = setTimeout(function(){refreshdiv(UsuarioO,UsuarioD)},seconds*1000);
-                         }
-                     }
-                     xmlHttp.open("GET",nocacheurl + "&" + cadena,true);
-                     xmlHttp.send(null);
-                    return timer;
-                }
-
-       </script>
+        <script src="refresh.js" language="JavaScript" type="text/javascript"></script>
+       
     <body>
         
         

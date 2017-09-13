@@ -47,7 +47,7 @@
                         </div>
                         <div class="Usuarios">
                             <ul>
-                                <%--Aqui viene el codigo para mostrar a todos los usuarios segun su estado --%>
+                                
 
                             </ul>
 

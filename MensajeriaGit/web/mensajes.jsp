@@ -9,13 +9,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="ISO-8859-1"> 
+        <meta http-equiv="Content-Type" content="text/html">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 		<script src ="https://code.jquery.com/jquery-latest.js"></script>
 		<script language="JavaScript" type="text/javascript" src="main.js"></script>
 		<script language="JavaScript" type="text/javascript" src="motor.js"></script>
+                
     </head>
     <body>
         <%
