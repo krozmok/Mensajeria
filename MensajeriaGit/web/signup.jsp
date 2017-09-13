@@ -46,15 +46,15 @@ and open the template in the editor.
             <h1>SIGN UP</h1>
             
             <form name = "frmSignUp" method = "post" action="validarRegistro.jsp">
-            Nombre: <input type = "text" name = "txtNombre"><br>
-            Nickname: <input type = "text" name = "txtNick"><br>
-            Fecha Nacimiento:  <input type = "date" name = "dateNacimiento"><br>
-            Sexo : <input type = "radio" name = "rdioSexo" value = "H"> Hombre   <input type = "radio" name = "rdioSexo" value = "H"> Mujer <br>
+                Nombre:<br><input type = "text" name = "txtNombre"><br>
+            Nickname: <br><input type = "text" name = "txtNick"><br>
+            Fecha Nacimiento: <br> <input type = "date" name = "dateNacimiento"><br>
+            Sexo : <br><input type = "radio" name = "rdioSexo" value = "H"> Hombre   <input type = "radio" name = "rdioSexo" value = "H"> Mujer <br>
            
-            Contraseña: <input type = "text" name = "txtpass"><br>
-            Confirmar contraseña: <input type = "text" name = "txtpassconfirm"><br>
-            Pregunta secreta: <input type = "text" name = "txtpregunta"><br>
-            Respuesta: <input type ="text" name ="txtrespuesta"><br>
+            Contraseña:<br> <input type = "password" name = "txtpass"><br>
+            Confirmar contraseña:<br> <input type = "password" name = "txtpassconfirm"><br>
+            Pregunta secreta: <br><input type = "text" name = "txtpregunta"><br>
+            Respuesta: <br><input type ="text" name ="txtrespuesta"><br>
             <input type="submit" value="Registrarse">
             </form>
             

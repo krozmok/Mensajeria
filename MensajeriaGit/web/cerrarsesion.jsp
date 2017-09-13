@@ -32,7 +32,7 @@
             col.update(DatosV, DatosN);
             session.setAttribute("Usuario", null);
             session.invalidate();
-            
+            mCliente.close();
             response.sendRedirect("index.jsp");
             
         %>

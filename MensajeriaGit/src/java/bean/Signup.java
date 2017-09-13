@@ -6,6 +6,7 @@
 package bean;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.*;
 import java.util.Date;
 
 /**
@@ -93,6 +94,11 @@ public class Signup {
 
     public void Insertar(){
         this.aBDCon = new Conexion("BDMensajeria");
+        BasicDBObject Query = new BasicDBObject();
+        Query.put("Usuario", this.aUsuario);
+        DBCursor C = aBDCon.RecuperarDatos("Usuario",Query);
+        if(!C.hasNext()){
+        
         BasicDBObject Documento = new BasicDBObject();
         Documento.put("Nombre", this.aNombre);
         Documento.put("Usuario", this.aUsuario);
@@ -104,5 +110,6 @@ public class Signup {
         Documento.put("Sesiones",this.Sesiones);
         Documento.put("Conectado",this.Conectado);
         this.aBDCon.InsertarDatos("Usuario", Documento);
+        }
     }
 }

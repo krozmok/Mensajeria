@@ -42,6 +42,7 @@
             coleccion.update(doc, doc_update);
 	    doc_update.append("$set", new BasicDBObject().append("Contraseña", pass_new));
 	    coleccion.update(doc, doc_update);
+            mCliente.close();
 	    %>
 	    <jsp:forward page="menu.jsp"/>
 	    <%

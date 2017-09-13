@@ -38,7 +38,6 @@
             </jsp:useBean>
             <%
                 miSesion.Insertar();
-                
             %>
             <jsp:forward page="menu.jsp"/>
                     <%    

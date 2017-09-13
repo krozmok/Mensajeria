@@ -13,27 +13,36 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div class="Mensajes">
+        <div class="Prueba">
             <% 
             HttpSession sesion = request.getSession();
-            //String UsuarioPrincipal = sesion.getAttribute("Usuario").toString();
-            String UsuarioPrincipal = "krozmok";
-            //String UsuarioDestino = request.getParameter("UsuarioD");
-            String UsuarioDestino = "jonsnow";
+            String UsuarioPrincipal = sesion.getAttribute("Usuario").toString();
+           
+            String UsuarioDestino = request.getParameter("UsuarioD");
+            
             String BaseDatos = "BDMensajeria";
             MongoClient mCliente = new MongoClient("25.94.233.89",27017);
             DB db = mCliente.getDB(BaseDatos);
             DBCollection coleccion = db.getCollection("Mensaje");
             DBCursor cursor = coleccion.find();
-            while(cursor.hasNext()){
-            DBObject Mens = cursor.next();
-            String Mensaje = Mens.get("Mensaje").toString();
-            String UsuarioO = Mens.get("UsuarioO").toString();
-            String UsuarioD = Mens.get("UsuarioD").toString();
-            if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
-            out.println(UsuarioO + ">>" + Mensaje + "<br>");
-                                        }
+                                while(cursor.hasNext()){
+                                    
+                                    DBObject Mens = cursor.next();
+                                    String Mensaje = Mens.get("Mensaje").toString();
+                                    String UsuarioO = Mens.get("UsuarioO").toString();
+                                    String UsuarioD = Mens.get("UsuarioD").toString();
+                                    String Tipo = Mens.get("Tipo").toString();
+                                    if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
+                                        if(Tipo.compareTo("1") == 0){
+                                             out.println(UsuarioO + ">>");
+                                        %>
+                                       <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
+                                        <%
+                                       }                                        
+                                        else out.println(UsuarioO + ">>" + Mensaje + "<br>");
+                                    }
                                 }
+                                mCliente.close();
         %>
         </div>
         

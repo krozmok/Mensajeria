@@ -33,13 +33,15 @@ en la BD.
                         DB db = mCliente.getDB(BaseDatos);
                         DBCollection C = db.getCollection("Usuario");
                         BasicDBObject Datosusuario= new BasicDBObject();
-                        String usuario = session.getAttribute("Usuario").toString();
+                        String usuario = request.getParameter("usuario");
                         Datosusuario.put("Usuario", usuario);
                         Cursor cursor = C.find(Datosusuario);
                         DBObject Usuario = cursor.next();
                         GridFS fsArchivo = new GridFS(db, "Archivos");
+                        
             try{
                             String Imagen = Usuario.get("ImgPerfil").toString();
+                            out.println(Imagen);
                             GridFSDBFile imgPmostrar = fsArchivo.findOne(Imagen);
                             response.setContentType("image/jpg");
                             OutputStream salida = response.getOutputStream();

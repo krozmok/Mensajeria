@@ -60,6 +60,7 @@
             <li ><a class = "Menu" href = "enviarmensaje.jsp">Enviar Mensajes</a></li>
             <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
+             <li><a class = "Menu" href="modificar_perfil.jsp">Modificar Perfil</a></li>
              <li><a class ="Menu" href="cerrarsesion.jsp">Sign Out</a></li>
             </ul>
         </nav>
@@ -67,7 +68,7 @@
             <section class="section">
                 <div id = "perfil-image">
                     <h3><font style="text-transform: uppercase"><%=usuario%></font> <br></h3> 
-                    <img src="04muestraImg.jsp" width="200px">
+                    <img src="04muestraImg.jsp?usuario=<%=usuario%>" width="200px">
                     
                 </div>
                 <div id= "Datos">

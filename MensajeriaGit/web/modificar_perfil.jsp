@@ -40,6 +40,8 @@
             <li ><a class = "Menu" href = "enviarmensaje.jsp">Enviar Mensajes</a></li>
             <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
+             <li><a class = "Menu" href="modificar_perfil.jsp">Modificar Perfil</a></li>
+             <li><a class ="Menu" href="cerrarsesion.jsp">Sign Out</a></li>
             </ul>
         </nav>
         <div id = "contenedor">
@@ -47,11 +49,11 @@
             <h1>Modificar información de usuario</h1>
             
             <form name = "frmModify" method = "post" action="validar_modificacion.jsp">
-		Contraseña: <input type = "text" name = "txtpass"><br><br>
-		Nombre: <input type = "text" name = "txtNombre"><br>
-		Sexo : <input type = "radio" name = "rdioSexo" value = "H"> Hombre   <input type = "radio" name = "rdioSexo" value = "H"> Mujer <br>
-		Nueva contraseña: <input type = "text" name = "txtnpass"><br>
-		Confirmar nueva contraseña: <input type = "text" name = "txtpassconfirm"><br>
+                <input placeholder="Contraseña" type = "text" name = "txtpass"><br><br>
+                <input placeholder="Nombre" type = "text" name = "txtNombre"><br>
+                <input placeholder="Sexo" type = "radio" name = "rdioSexo" value = "H"> Hombre   <input type = "radio" name = "rdioSexo" value = "H"> Mujer <br>
+                <input placeholder="Nueva contraseña" type = "text" name = "txtnpass"><br>
+                <input placeholder="Confirmar nueva contraseña" type = "text" name = "txtpassconfirm"><br>
 		<input type="submit" value="Confirmar">
             </form>
             

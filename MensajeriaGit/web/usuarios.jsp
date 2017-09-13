@@ -46,6 +46,7 @@
             <li ><a class = "Menu" href = "enviarmensaje.jsp">Enviar Mensajes</a></li>
             <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
+             <li><a class = "Menu" href="modificar_perfil.jsp">Modificar Perfil</a></li>
              <li><a class ="Menu" href="cerrarsesion.jsp">Sign Out</a></li>
             </ul>
         </nav>
@@ -65,34 +66,34 @@
                         BasicDBObject Usuarios = new BasicDBObject();
                         Usuarios.put("Conectado", true);
                         Cursor C = coleccion.find(Usuarios);
-                        out.println("<h3>USUARIOS CONECTADOS</h3>");
+                        out.println("<h3>USUARIOS CONECTADOS</h3><br>");
                     %>
-                    <form name="fmEnviarMensaje" method="get" action ="conversacion.jsp">
+                    <form class="usuarios" name="fmEnviarMensaje" method="get" action ="conversacion.jsp">
                     <%
                         while(C.hasNext()){
                             DBObject Us = C.next();
                             String Nick = Us.get("Usuario").toString();
                             if (!Usuario.equals(Nick)) {
                     %>
-                            <input class="btn" name = "UsuarioD" type ="submit" value="<%=Nick%>" />
+                            <input class="btn" name = "UsuarioD" type ="submit" value="<%=Nick%>" /><br><br>
                     <%
                                 }
                         }
                             %>
                     </form>
-                    <form name="fmEnviarMensaje" method="get" action ="conversacion.jsp">
+                    <form class="usuarios" name="fmEnviarMensaje" method="get" action ="conversacion.jsp">
                             <%
                         
                         Usuarios = new BasicDBObject();
                         Usuarios.put("Conectado", false);
-                        out.println("<h3>USUARIOS DESCONECTADOS</h3>");
+                        out.println("<h3>USUARIOS DESCONECTADOS</h3><br>");
                         C = coleccion.find(Usuarios);
                      while(C.hasNext()){
                             DBObject Us = C.next();
                             String Nick = Us.get("Usuario").toString();
                             if (!Usuario.equals(Nick)) {
                     %>
-                            <input class="btn" name = "UsuarioD" type ="submit" value="<%=Nick%>" />
+                    <input class="btn" name = "UsuarioD" type ="submit" value="<%=Nick%>" /> <br><br>
                     <%
                                 }
                         }

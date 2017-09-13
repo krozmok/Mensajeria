@@ -4,6 +4,9 @@
     Author     : Paul
 --%>
 
+<%@page import="java.io.OutputStream"%>
+<%@page import="com.mongodb.gridfs.GridFSDBFile"%>
+<%@page import="com.mongodb.gridfs.GridFS"%>
 <%@page import="com.mongodb.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +15,7 @@
         <%
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("setLoggin") == null || sesion.getAttribute("setLoggin").toString().compareTo("true")!=0){
+               
         %>
         <jsp:forward page="login.jsp"/>
         <%
@@ -29,17 +33,15 @@
         <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="style.css">
 	<script src ="https://code.jquery.com/jquery-latest.js"></script>
-        <script language="JavaScript" type="text/javascript" src="main.js"></script>
-	<script language="JavaScript" type="text/javascript" src="refresh.js"></script>
-        <script>
-            /*var seconds = 1; // intervalo de actualizar div
-            var divid = "Mensajes"; // el div que quieres actualizar!
-            var url = "ventanaChat.jsp?" +"UsuarioD="+ '<%=UsuarioDestino%>'; // el archivo de proceso php
+        
+        <script language="JavaScript" type="text/javascript">
+        function refreshdiv(UsuarioO,UsuarioD){
+        var cadena = "UsuarioO="+UsuarioO+"&UsuarioD="+UsuarioD;
+        var seconds = 1; // intervalo de actualizar div
+        var divid = "Mensajes"; // el div que quieres actualizar!
+        var url = "ventanaChat.jsp";// el archivo de proceso php
 
-                 function objetoajax(){
-
-                     // The XMLHttpRequest object
-
+                 
                      var xmlHttp;
                      try{
                          xmlHttp=new XMLHttpRequest(); // Firefox, Opera 8.0+, Safari
@@ -58,24 +60,23 @@
                              }
                          }
                      }
-
-                     var procesourl = url
-
+                     var timestamp = parseInt(new Date().getTime().toString().substring(0,10));
+                     
+                     var nocacheurl = url + "?t=" + timestamp; 
+                     
                      // The code...
 
                      xmlHttp.onreadystatechange=function(){
-                         if(xmlHttp.readyState== 4 && xmlHttp.readyState != null){
-                             document.getElementsByClassName(divid).innerHTML=xmlHttp.responseText;
-                             setTimeout('objetoajax()',seconds*1000);
+                         if(xmlHttp.readyState === 4 && xmlHttp.readyState !== null){
+                             document.getElementById(divid).innerHTML=xmlHttp.responseText;
+                             var timer = setTimeout(function(){refreshdiv(UsuarioO,UsuarioD)},seconds*1000);
                          }
                      }
-                     xmlHttp.open("GET",procesourl,true);
+                     xmlHttp.open("GET",nocacheurl + "&" + cadena,true);
                      xmlHttp.send(null);
-                 }
+                    return timer;
+                }
 
-                 window.onload = function(){
-                     objetoajax(); // Ejecutamos objetoajax
-                  }*/
        </script>
     <body>
         
@@ -97,6 +98,7 @@
             <li ><a class = "Menu" href = "enviarmensaje.jsp">Enviar Mensajes</a></li>
             <li><a class = "Menu" href="archivos.jsp">Archivos</a></li>
              <li><a class = "Menu" href="usuarios.jsp">Usuarios</a></li>
+             <li><a class = "Menu" href="modificar_perfil.jsp">Modificar Perfil</a></li>
              <li><a class ="Menu" href="cerrarsesion.jsp">Sign Out</a></li>
             </ul>
         </nav>
@@ -106,36 +108,22 @@
                 <div id="presentacion">
                     <div class="chat">
                         <div class="Imagen1">
-                            <%=UsuarioPrincipal%>
+                            
+                            <%=UsuarioPrincipal%><br>
+                            <img src="04muestraImg.jsp?usuario=<%=UsuarioPrincipal%>" width="200px">
                         </div>
                         <div class="Imagen2">
-                            <%=UsuarioDestino%>
+                            <%=UsuarioDestino%><br>
+                            <img src="04muestraImg.jsp?usuario=<%=UsuarioDestino%>" width="200px">
                         </div>
-                        <div class="Mensajes" >
-                            
-                            <% 
-                                
-                                DBCollection coleccion = db.getCollection("Mensaje");
-                                DBCursor cursor = coleccion.find();
-                                while(cursor.hasNext()){
-                                    
-                                    DBObject Mens = cursor.next();
-                                    String Mensaje = Mens.get("Mensaje").toString();
-                                    String UsuarioO = Mens.get("UsuarioO").toString();
-                                    String UsuarioD = Mens.get("UsuarioD").toString();
-                                    String Tipo = Mens.get("Tipo").toString();
-                                    if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
-                                        if(Tipo.compareTo("1") == 0){
-                                             out.println(UsuarioO + ">>");
-                                        %>
-                                        <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
-                                        <%
-                                        }                                        
-                                        else out.println(UsuarioO + ">>" + Mensaje + "<br>");
-                                    }
-                                }
-                            %>
+                        <div id="Mensajes" >
+                          
                         </div>
+                        <script language="JavaScript" type="text/javascript">
+                            var UsuarioO = '<%=UsuarioPrincipal%>';
+                            var UsuarioD = '<%=UsuarioDestino%>';
+                            refreshdiv(UsuarioO,UsuarioD);
+                        </script>
                     </div>
                         <form class="message-box" method="post" enctype="multipart/form-data" action = "envio.jsp">
                             <input type="hidden" name = "UsuarioD" value= <%=UsuarioDestino%>>
@@ -145,6 +133,7 @@
                         </form>
                         
                 </div>
+                            <div id="Prueba"></div>
             </section>
         </div>
         <div class="footer">

@@ -50,8 +50,8 @@
                
 	<h1>LOG IN</h1>	
             <form action = "verificarLogin.jsp" name = "frmMain" method = "get">
-                Usuario: <input type = "text" name = "txtUSR"><br>
-                Contraseña: <input type ="password"  name ="txtPASS"><br>
+                <input placeholder="Usuario" type = "text" name = "txtUSR"><br>
+                <input placeholder="Contraseña" type ="password"  name ="txtPASS"><br>
 	<input type ="submit" value="Validar">
         </form>
 	</section>
