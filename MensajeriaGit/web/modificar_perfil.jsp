@@ -50,13 +50,19 @@
             
             <form name = "frmModify" method = "post" action="validar_modificacion.jsp">
                 <input placeholder="Contraseña" type = "text" name = "txtpass"><br><br>
+                
                 <input placeholder="Nombre" type = "text" name = "txtNombre"><br>
                 <input placeholder="Sexo" type = "radio" name = "rdioSexo" value = "H"> Hombre   <input type = "radio" name = "rdioSexo" value = "H"> Mujer <br>
                 <input placeholder="Nueva contraseña" type = "text" name = "txtnpass"><br>
                 <input placeholder="Confirmar nueva contraseña" type = "text" name = "txtpassconfirm"><br>
-		<input type="submit" value="Confirmar">
+                <input type="submit" value="Confirmar"><br><br>
+            </form><br><br>
+           
+            <form name="frmSubirFoto" method ="post" action="pgnSubirFoto.jsp" enctype="multipart/form-data">
+                
+                <input type="file" name="archivo" multiple=""><br>
+                <input type="submit" value="Subir Foto">
             </form>
-            
         </section>
         </div>
         <div class="footer">
