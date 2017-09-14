@@ -11,13 +11,13 @@ import com.mongodb.*;
  *
  * @author Paul
  */
-public class Login {
+public class CLogin {
     private String aUsuario;
     private String aContraseña;
-    private Conexion Con;
+    private CConexion aCon;
     
 
-    public Login() {
+    public CLogin() {
     }
 
     public void setaUsuario(String aUsuario) {
@@ -28,20 +28,20 @@ public class Login {
         this.aContraseña = aContraseña;
     }
 
-    public void setCon(Conexion Con) {
-        this.Con = Con;
+    public void setCon(CConexion Con) {
+        this.aCon = Con;
     }
 
   
     
     
     public boolean ValidarLogIn(){
-        this.Con = new Conexion("BDMensajeria");
-        Con.CrearConexion();
+        this.aCon = new CConexion("BDMensajeria");
+        aCon.CrearConexion();
         BasicDBObject Datos = new BasicDBObject();
         Datos.put("Usuario",aUsuario);
         Datos.put("Contraseña", aContraseña);
-        Cursor cur = Con.RecuperarDatos("Usuario", Datos);
+        Cursor cur = aCon.RecuperarDatos("Usuario", Datos);
         if (cur.hasNext()) {
             //Creamos un nuevo DBObject de manera que se actualizarán
             //las sesiones y el estado de conectado
@@ -49,7 +49,7 @@ public class Login {
             update.append("$inc", new BasicDBObject().append("Sesiones", 1));
             update.append("$set", new BasicDBObject().append("Conectado", true));
             
-            Con.Update("Usuario", Datos, update);
+            aCon.Update("Usuario", Datos, update);
             return true;
         }
         else

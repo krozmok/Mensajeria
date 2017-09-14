@@ -17,7 +17,7 @@
            String Usuario = request.getParameter("txtUSR");
            String Password = request.getParameter("txtPASS");
         %>
-        <jsp:useBean id="miLogin" class="bean.Login" scope="session">
+        <jsp:useBean id="miLogin" class="bean.CLogin" scope="session">
             <jsp:setProperty name="miLogin" property="aUsuario" value="<%=Usuario%>"/>
             <jsp:setProperty name="miLogin" property="aContraseña" value="<%=Password%>"/>
         </jsp:useBean>

@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author Paul
  */
-public class Signup {
+public class CSignup {
     private String aNombre;
     private String aUsuario;
     private String aFechaNacimiento;
@@ -21,11 +21,11 @@ public class Signup {
     private String aContrasena;
     private String aPreguntaSecreta;
     private String aRespuesta;
-    private Conexion aBDCon;
+    private CConexion aBDCon;
     private int Sesiones = 0;
     private boolean Conectado = false;
 
-    public Signup() {
+    public CSignup() {
     }
 
     public String getaNombre() {
@@ -56,7 +56,7 @@ public class Signup {
         return aRespuesta;
     }
 
-    public Conexion getaBDCon() {
+    public CConexion getaBDCon() {
         return aBDCon;
     }
 
@@ -88,12 +88,12 @@ public class Signup {
         this.aRespuesta = aRespuesta;
     }
 
-    public void setaBDCon(Conexion aBDCon) {
+    public void setaBDCon(CConexion aBDCon) {
         this.aBDCon = aBDCon;
     }
 
     public void Insertar(){
-        this.aBDCon = new Conexion("BDMensajeria");
+        this.aBDCon = new CConexion("BDMensajeria");
         BasicDBObject Query = new BasicDBObject();
         Query.put("Usuario", this.aUsuario);
         DBCursor C = aBDCon.RecuperarDatos("Usuario",Query);

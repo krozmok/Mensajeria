@@ -27,7 +27,7 @@
                 String Respuesta = request.getParameter("txtrespuesta");
                 
         %>
-            <jsp:useBean id="miSesion" class="bean.Signup" scope = "session">
+            <jsp:useBean id="miSesion" class="bean.CSignup" scope = "session">
                 <jsp:setProperty name="miSesion" property = "aNombre" value="<%=Nombre%>" />
                 <jsp:setProperty name="miSesion" property = "aUsuario" value="<%=Usuario%>" />
                 <jsp:setProperty name="miSesion" property = "aFechaNacimiento" value="<%=Nacimiento%>" />
