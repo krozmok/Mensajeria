@@ -11,6 +11,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+	<script src="push.js/push.min.js"></script>
+	<script>
+	    function Notificate(from){
+		sub = 'Es mala educación dejar a la gente en visto...';
+		if(from != "") sub = from+" te envió un mensaje.";
+		Push.create('Tienes un nuevo mensaje', {
+		    body: sub,
+		    timeout: 4000
+		});
+	    }
+	</script>
     </head>
     <body>
         <div class="Prueba">
@@ -40,6 +51,11 @@
                                         <%
                                        }                                        
                                         else out.println(UsuarioO + ">>" + Mensaje + "<br>");
+					%>
+					<script>
+					    Notificate("");
+					</script>
+					<%
                                     }
                                 }
                                 mCliente.close();
