@@ -35,29 +35,27 @@
             DB db = mCliente.getDB(BaseDatos);
             DBCollection coleccion = db.getCollection("Mensaje");
             DBCursor cursor = coleccion.find();
-	    %>
-	    <script>
-		Notificate("");
-	    </script>
-	    <%
-                                while(cursor.hasNext()){
-                                    
-                                    DBObject Mens = cursor.next();
-                                    String Mensaje = Mens.get("Mensaje").toString();
-                                    String UsuarioO = Mens.get("UsuarioO").toString();
-                                    String UsuarioD = Mens.get("UsuarioD").toString();
-                                    String Tipo = Mens.get("Tipo").toString();
-                                    if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
-                                        if(Tipo.compareTo("1") == 0){
-                                             out.println(UsuarioO + ">>");
-                                        %>
-                                       <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
-                                        <%
-                                       }                                        
-                                        else out.println(UsuarioO + ">>" + Mensaje + "<br>");
-                                    }
-                                }
-                                mCliente.close();
+            while(cursor.hasNext()){
+
+                DBObject Mens = cursor.next();
+                String Mensaje = Mens.get("Mensaje").toString();
+                String UsuarioO = Mens.get("UsuarioO").toString();
+                String UsuarioD = Mens.get("UsuarioD").toString();
+                String Tipo = Mens.get("Tipo").toString();
+                if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
+                    if(Tipo.compareTo("1") == 0){
+                         out.println(UsuarioO + ">>");
+                    %>
+                    <script>
+                        Notificate("");
+                    </script>
+                   <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
+                    <%
+                   }                                        
+                    else out.println(UsuarioO + ">>" + Mensaje + "<br>");
+                }
+            }
+            mCliente.close();
         %>
         </div>
         

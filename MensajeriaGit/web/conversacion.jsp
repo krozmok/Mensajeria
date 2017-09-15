@@ -27,11 +27,25 @@
             
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="refresh" content = "5">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <!--
 	<script src ="https://code.jquery.com/jquery-latest.js"></script>
-        <script src="refresh.js" language="JavaScript" type="text/javascript"></script>
+        <script src="refresh.js" language="JavaScript" type="text/javascript"></script>-->
+        <script src="push.js/push.min.js"></script>
+        
+	<script>
+	    function Notificate(from){
+		sub = 'Es mala educación dejar a la gente en visto...';
+		//if(from !="") sub = from+" te envió un mensaje.";
+		Push.create('Tienes un nuevo mensaje', {
+		    body: sub,
+		    timeout: 4000
+		});
+	    }
+	</script>
        
     <body>
         
@@ -72,7 +86,35 @@
                             <img src="04muestraImg.jsp?usuario=<%=UsuarioDestino%>" width="200px">
                         </div>
                         <div id="Mensajes" >
-                          
+                          <%
+
+            String BaseDatos = "BDMensajeria";
+            MongoClient mCliente = new MongoClient("25.94.233.89",27017);
+            DB db = mCliente.getDB(BaseDatos);
+            DBCollection coleccion = db.getCollection("Mensaje");
+            DBCursor cursor = coleccion.find();
+            while(cursor.hasNext()){
+
+                DBObject Mens = cursor.next();
+                String Mensaje = Mens.get("Mensaje").toString();
+                String UsuarioO = Mens.get("UsuarioO").toString();
+                String UsuarioD = Mens.get("UsuarioD").toString();
+                String Tipo = Mens.get("Tipo").toString();
+                if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
+                    if(Tipo.compareTo("1") == 0){
+                         out.println(UsuarioO + ">>");
+                    %>
+                    <script>
+                        Notificate("");
+                    </script>
+                   <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
+                    <%
+                   }                                        
+                    else out.println(UsuarioO + ">>" + Mensaje + "<br>");
+                }
+            }
+            mCliente.close();
+        %>
                         </div>
                         <script language="JavaScript" type="text/javascript">
                             var UsuarioO = '<%=UsuarioPrincipal%>';

@@ -16,6 +16,8 @@
     </head>
     
     <body>
+        
+        
         <%
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("setLoggin") == null) sesion.setAttribute("setLoggin", "false");
