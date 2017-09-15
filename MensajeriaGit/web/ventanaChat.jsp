@@ -15,7 +15,7 @@
 	<script>
 	    function Notificate(from){
 		sub = 'Es mala educación dejar a la gente en visto...';
-		if(from != "") sub = from+" te envió un mensaje.";
+		//if(from !="") sub = from+" te envió un mensaje.";
 		Push.create('Tienes un nuevo mensaje', {
 		    body: sub,
 		    timeout: 4000
@@ -25,17 +25,21 @@
     </head>
     <body>
         <div class="Prueba">
-            <% 
+            <%
             HttpSession sesion = request.getSession();
             String UsuarioPrincipal = sesion.getAttribute("Usuario").toString();
            
             String UsuarioDestino = request.getParameter("UsuarioD");
-            
             String BaseDatos = "BDMensajeria";
             MongoClient mCliente = new MongoClient("25.94.233.89",27017);
             DB db = mCliente.getDB(BaseDatos);
             DBCollection coleccion = db.getCollection("Mensaje");
             DBCursor cursor = coleccion.find();
+	    %>
+	    <script>
+		Notificate("");
+	    </script>
+	    <%
                                 while(cursor.hasNext()){
                                     
                                     DBObject Mens = cursor.next();
@@ -51,11 +55,6 @@
                                         <%
                                        }                                        
                                         else out.println(UsuarioO + ">>" + Mensaje + "<br>");
-					%>
-					<script>
-					    Notificate("");
-					</script>
-					<%
                                     }
                                 }
                                 mCliente.close();
