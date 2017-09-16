@@ -428,7 +428,7 @@ option{
     width: 20%;
     min-width: 150px;
     border: 0;
-    //margin: 0 0 15px;
+    /*margin: 0 0 15px*/
     padding: 15px;
     box-sizing: border-box;
     font-size: 14px;

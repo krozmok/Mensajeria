@@ -87,7 +87,6 @@
                         </div>
                         <div id="Mensajes" >
                           <%
-
             String BaseDatos = "BDMensajeria";
             MongoClient mCliente = new MongoClient("25.94.233.89",27017);
             DB db = mCliente.getDB(BaseDatos);
