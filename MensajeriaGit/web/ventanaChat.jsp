@@ -46,9 +46,6 @@
                     if(Tipo.compareTo("1") == 0){
                          out.println(UsuarioO + ">>");
                     %>
-                    <script>
-                        Notificate("");
-                    </script>
                    <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
                     <%
                    }                                        

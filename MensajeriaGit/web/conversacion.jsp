@@ -101,12 +101,20 @@
                 String UsuarioD = Mens.get("UsuarioD").toString();
                 String Tipo = Mens.get("Tipo").toString();
                 if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
+		    if(Mens.get("Visto").toString().compareTo("0") > 0){
+			%>
+			<script>
+			    Notificate("");
+			</script>
+			<%
+			//Actualizar la base
+			BasicDBObject Mens_update = new BasicDBObject();
+			Mens_update.append("$set", new BasicDBObject().append("Visto", 1));
+			coleccion.update(Mens, Mens_update);
+		    }
                     if(Tipo.compareTo("1") == 0){
                          out.println(UsuarioO + ">>");
                     %>
-                    <script>
-                        Notificate("");
-                    </script>
                    <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
                     <%
                    }                                        
