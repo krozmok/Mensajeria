@@ -37,12 +37,11 @@
         <script src="push.js/push.min.js"></script>
         
 	<script>
-	    function Notificate(from){
-		sub = 'Es mala educación dejar a la gente en visto...';
-		//if(from !="") sub = from+" te envió un mensaje.";
-		Push.create('Tienes un nuevo mensaje', {
+	    function Notificate(from, text){
+		sub = from + ': '+text;
+		Push.create('Nuevo mensaje de '+from, {
 		    body: sub,
-		    timeout: 4000
+		    timeout: 5000
 		});
 	    }
 	</script>
@@ -93,17 +92,16 @@
             DBCollection coleccion = db.getCollection("Mensaje");
             DBCursor cursor = coleccion.find();
             while(cursor.hasNext()){
-
                 DBObject Mens = cursor.next();
                 String Mensaje = Mens.get("Mensaje").toString();
                 String UsuarioO = Mens.get("UsuarioO").toString();
                 String UsuarioD = Mens.get("UsuarioD").toString();
                 String Tipo = Mens.get("Tipo").toString();
                 if ((UsuarioO.equals(UsuarioPrincipal) && UsuarioD.equals(UsuarioDestino)) || (UsuarioO.equals(UsuarioDestino) && UsuarioD.equals(UsuarioPrincipal)) ){
-		    if(Mens.get("Visto").toString().compareTo("0") > 0){
+		    if(Mens.get("Visto").toString().compareTo("0") == 0 && UsuarioPrincipal.compareTo(UsuarioD) == 0){
 			%>
 			<script>
-			    Notificate("");
+			    Notificate('<%=UsuarioPrincipal%>', '<%=Mensaje%>');
 			</script>
 			<%
 			//Actualizar la base
@@ -116,8 +114,10 @@
                     %>
                    <a href="DescargarArchivos.jsp?Archivo=<%=Mensaje%>" download="<%=Mensaje%>"><%=Mensaje%></a><br>
                     <%
-                   }                                        
-                    else out.println(UsuarioO + ">>" + Mensaje + "<br>");
+		    }
+		    else{
+			out.println(UsuarioO + ">>" + Mensaje + "<br>");
+		    }
                 }
             }
             mCliente.close();
