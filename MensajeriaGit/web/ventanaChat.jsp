@@ -11,16 +11,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <script src="push.js/push.min.js"></script>
-	<script>
-	    function Notificate(from, text){
-		sub = from + ': '+text;
-		Push.create('Nuevo mensaje de '+from, {
-		    body: sub,
-		    timeout: 5000
-		});
-	    }
-	</script>
     </head>
     <body>
         <div class="Prueba">
@@ -46,7 +36,7 @@
 					if(Mens.get("Visto").toString().compareTo("0") == 0 && UsuarioPrincipal.compareTo(UsuarioD) == 0){
 					    %>
 					    <script>
-						Notificate('<%=UsuarioPrincipal%>', '<%=Mensaje%>');
+						Notificate('<%=UsuarioDestino%>', '<%=Mensaje%>');
 					    </script>
 					    <%
 					    //Actualizar la base
