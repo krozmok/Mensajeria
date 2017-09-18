@@ -61,11 +61,6 @@
                                         <%
                                        }                                        
                                         else out.println(UsuarioO + ">>" + Mensaje + "<br>");
-					%>
-					<script>
-					    Notificate("");
-					</script>
-					<%
                                     }
                                 }
                                 mCliente.close();
