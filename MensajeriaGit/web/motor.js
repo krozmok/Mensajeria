@@ -41,8 +41,12 @@ mostrar contenidos apoyados con ajax
      }
      function cargarObjeto(objeto, id)
      {
-         if (objeto.readyState === 4) //si se ha cargado completamente
+         if (objeto.readyState === 4){ //si se ha cargado completamente
              document.getElementById(id).innerHTML = objeto.responseText;
+	    var arr = document.getElementsByTagName('script');
+	    for (var n = 0; n < arr.length; n++)
+		eval(arr[n].innerHTML);//run script inside div
+	}
          else //en caso contrario, mostramos un gif simulando una precarga
              document.getElementById(id).innerHTML = "CARGANDO...";
      }

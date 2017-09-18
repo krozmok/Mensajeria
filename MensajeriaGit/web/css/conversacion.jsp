@@ -27,12 +27,12 @@
             
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="refresh" content = "5">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="style.css">
 	<script src ="https://code.jquery.com/jquery-latest.js"></script>
         <script src="refresh.js" language="JavaScript" type="text/javascript"></script>
-        <script src="main.js" language="JavaScript" type="text/javascript"></script>
         <script src="push.js/push.min.js"></script>
 	<script>
 	    function Notificate(from, text){
@@ -43,6 +43,7 @@
 		});
 	    }
 	</script>
+       
     <body>
         
         
@@ -82,7 +83,6 @@
                             <img src="04muestraImg.jsp?usuario=<%=UsuarioDestino%>" width="200px">
                         </div>
                         <div id="Mensajes" >
-                          
                         </div>
                         <script language="JavaScript" type="text/javascript">
                             var UsuarioO = '<%=UsuarioPrincipal%>';

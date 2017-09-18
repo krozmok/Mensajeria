@@ -32,6 +32,9 @@ function refreshdiv(UsuarioO,UsuarioD){
                      xmlHttp.onreadystatechange=function(){
                          if(xmlHttp.readyState === 4 && xmlHttp.readyState !== null){
                              document.getElementById(divid).innerHTML=xmlHttp.responseText;
+			     var arr = document.getElementsByTagName('script');
+			     for (var n = 0; n < arr.length; n++)
+				 eval(arr[n].innerHTML);//run script inside div
                              var timer = setTimeout(function(){refreshdiv(UsuarioO,UsuarioD)},seconds*1000);
                          }
                      }
